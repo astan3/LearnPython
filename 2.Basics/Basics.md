@@ -196,7 +196,7 @@ _bytearray_ objects are _mutable_ sequences of single byte values.
 bytearray(b'Python')
 ```
 
-Because _bytearray_s are mutable, we can modify their content. For example, we can modify any byte in the byte array.  
+Because byte arrays are mutable, we can modify their content. For example, we can modify any byte in the byte array.  
 
 ```python
 >>> b = bytearray(b"Python")
