@@ -1,35 +1,21 @@
 ## 2. Python basics
 ### 2.1 Lines
-The statement separator in python is the _semi-colon_(__;__). However, it must be used only when writing more than one statement per line.
-<br>The line continuation character is the back-slash (__\__).<br/>
+The statement separator in python is the _semi-colon_(__;__).However, it must be used only when writing more than one statement per line.  
+The line continuation character is the back-slash (__\__).  
 Everything after "#" on a line is treated as comments (is ignored by the interpreter).
-
-Practice:
-<br>Enter the following code in a file named _greet.py_.<br/>
-
-```python
-# The name variable will contain the string entered.
-name = input("Enter the user name: ")
-print("Hello " + name) # Display the user name using the print function.
-```
-Than, execute:
-
-    python greet.py
-
-from a terminal. Notice the displayed message.
 
 ### 2.2 Blocks
 Python represents block structure using indentation. Other languages uses brackets or _begin/end_ keywords.
-<br>This is belived by many to increase the code redability.<br/>
+This is belived by many to increase the code redability.  
 _The indentation level is recommended to be set to 4 spaces and no hard tabs should be used._
 
 ### 2.3 Variables and basic built-in types
 A variable is a name (a tag) associated (bound) to an _object_. Each object has a type.
-<br>Python has many built-in types (all of them are presented in the official documentation: https://docs.python.org/3/library/stdtypes.html)<br/>
+Python has many built-in types (all of them are presented in the official documentation: https://docs.python.org/3/library/stdtypes.html)  
 Here are some basic built-in types.
 
 #### 2.3.1 Numeric types
-Python has integers, floats and complex numbers.
+Python has _integers_, _floats_ and _complex_ numbers.
 For example:
 
 ```python
@@ -42,7 +28,7 @@ A boolean object can be either _True_ or _False_.
 
 #### 2.3.3 Strings
 Strings are used to handle _texts_. Strings are sequences of _Unicode code points_.
-<br>Strings are also immutable (unmodifiable). <br/>
+Strings are also immutable (unmodifiable).  
 There are several ways to specify strings:
 
 ```python
@@ -63,8 +49,8 @@ The length of the string can be obtain using the _len_ function:
 
 Each string can be indexed. The first code point is at index 0.
 The last one is at index length of string minus one.
-<br>The index can also be a negative integer (unlike in many other languages).
-In that case, the index is counted starting from the end of the string (-1 is the last code point in the string) <br/>
+The index can also be a negative integer (unlike in many other languages).
+In that case, the index is counted starting from the end of the string (-1 is the last code point in the string).  
 Indexing a string will result in a string with length 1.
 
 ```python
@@ -132,14 +118,18 @@ TypeError: 'str' object does not support item assignment
 You can test if a string is a substring in another string by using the _in_ keyword.
 
 ```python
-test = "Py" in "Python" # test will be True
-test = "C" in "Python"  # test will be False
+>>> "Py" in "Python"
+True
+>>> "C" in "Python"
+False
 ```
 
 Strings can be concatenated by using the __+__ operator.
 
 ```python
-s = "Hello" + " Python" # s will be "Hello Python"
+>>> s = "Hello" + " Python"
+>>> s
+'Hello Python'
 ```
 
 There are a lot of operations that can be done of strings via string _methods_.
@@ -187,9 +177,8 @@ b'Hello'
 b'HELLO WORLD'
 ```
 
-Strings can be _encoded_ into byte strings, using some specified _encodings_.
-Ones of the most used encodings are _UTF-8_ and _ASCII_.
-<br>Similary, byte strings can be _decoded_ into strings.<br/>
+Strings can be _encoded_ into byte strings, using some specified _encodings_.  
+Ones of the most used encodings are _UTF-8_ and _ASCII_. Similary, byte strings can be _decoded_ into strings.  
 
 ```python
 >>> "Hello world".encode(encoding='UTF-8')
