@@ -187,7 +187,35 @@ b'Hello world'
 'Hello world'
 ```
 
-#### 2.3.5 NoneType
+#### 2.3.5 Byte arrays
+_bytearray_ objects are _mutable_ sequences of single byte values.  
+
+```python
+>>> b = bytearray(b"Python")
+>>> b
+bytearray(b'Python')
+```
+
+Because _bytearray_s are mutable, we can modify their content. For example, we can modify any byte in the byte array.  
+
+```python
+>>> b = bytearray(b"Python")
+>>> b[0] = ord('C')
+>>> b
+bytearray(b'Cython')
+>>> b.append(ord('x'))
+>>> b
+bytearray(b'Cythonx')
+>>> b.insert(1, ord('z'))
+>>> b
+bytearray(b'Czythonx')
+>>> b.hex()
+'437a7974686f6e78'
+>>> bytes.fromhex('437a7974686f6e78')
+b'Czythonx'
+```
+
+#### 2.3.6 NoneType
 
 _NoneType_ is a type that has only one value, _None_. _None_ is frequently used to indicate _the absence of a value_.
 This is conceptually similar to a _null_ reference in _Java_.
