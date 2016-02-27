@@ -1,4 +1,4 @@
-## 2. Python basics
+## 2. Basics
 ### 2.1 Lines
 The statement separator in python is the _semi-colon_(__;__).However, it must be used only when writing more than one statement per line.  
 The line continuation character is the back-slash (__\__).  
@@ -47,7 +47,7 @@ The length of the string can be obtain using the _len_ function:
 >>> 16
 ```
 
-Each string can be indexed. The first code point is at index 0.
+Each string can be indexed. The first code point is at _index 0_.
 The last one is at index length of string minus one.
 The index can also be a negative integer (unlike in many other languages).
 In that case, the index is counted starting from the end of the string (-1 is the last code point in the string).  
@@ -200,18 +200,18 @@ Because byte arrays are mutable, we can modify their content. For example, we ca
 
 ```python
 >>> b = bytearray(b"Python")
->>> b[0] = ord('C')
+>>> b[0] = ord('C')                      # Change the first element from 'P' to 'C'.
 >>> b
 bytearray(b'Cython')
->>> b.append(ord('x'))
+>>> b.append(ord('x'))                   # Append 'x'.
 >>> b
 bytearray(b'Cythonx')
->>> b.insert(1, ord('z'))
+>>> b.insert(1, ord('z'))                # Insert 'z' at index 1.
 >>> b
 bytearray(b'Czythonx')
 >>> b.hex()
-'437a7974686f6e78'
->>> bytes.fromhex('437a7974686f6e78')
+'437a7974686f6e78'                       # Hexadecimal representation for our byte array.
+>>> bytes.fromhex('437a7974686f6e78')    # Create a bytearray object from a hexadecimal representation.
 b'Czythonx'
 ```
 
