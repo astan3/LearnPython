@@ -132,6 +132,22 @@ Strings can be concatenated by using the __+__ operator.
 'Hello Python'
 ```
 
+Python has powerful string formatting capabilities:  
+```python
+>>> "{} {}".format("Hello", "Python")
+'Hello Python'
+>>> "I am playing {} for {} hours".format("tennis", 2) 
+'I am playing tennis for 2 hours'
+```
+
+You can explicitly specify the arguments ordering:  
+```python 
+>>> "{0} {1}".format("Hello", "Python")
+'Hello Python'
+>>> "{1} {0}".format("Hello", "Python")
+'Python Hello'
+```
+
 There are a lot of operations that can be done of strings via string _methods_.
 A few examples:
 
@@ -176,6 +192,8 @@ b'Hello'
 >>> s2.upper()
 b'HELLO WORLD'
 ```
+
+Here, the _s2_ byte array is initialized with the ASCII code values for "Hello world", in hexadecimal.  
 
 Strings can be _encoded_ into byte strings, using some specified _encodings_.  
 Ones of the most used encodings are _UTF-8_ and _ASCII_. Similary, byte strings can be _decoded_ into strings.  
