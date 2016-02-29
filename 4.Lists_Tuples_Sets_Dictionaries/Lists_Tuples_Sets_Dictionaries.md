@@ -264,9 +264,9 @@ TypeError: 'tuple' object does not support item assignment
 
 ### 4.3 Sets
 _Sets_ are _unordered_ collection of _unique_ objects. A set _cannot contain duplicates_.  
-Sets can be created by enclosing a group of values in brackets.  
+Sets can be created by enclosing a group of values in curly braces.  
 Another way to create a set is to use the _set()_ function and provide a sequence of elements.  
-To create an emtpy set, use the _set()_ function without any parameter.   
+To create an _emtpy_ set, use the _set()_ function without any parameter.   
 
 ```python
 >>> s = {9, 8, 1, 2, 1, 9, 8, 7}
@@ -364,3 +364,147 @@ This is equivalent to:
 {2, 4, 6, 8}
 ```
 
+### 4.4 Dictionaries
+_Dictionaries_ are associative arrays, mapping keys to values.  
+Dictionaries can be created by enclosing the values inside curly braces, as follows:  
+
+```python
+>>> capitals = {"United Kingdom" : "London", "France" : "Paris", "Italy" : "Rome", "Germany" : "Berlin"}
+>>> capitals
+{'France': 'Paris',
+ 'Germany': 'Berlin',
+ 'Italy': 'Rome',
+ 'United Kingdom': 'London'}
+>>> capitals["France"]  # "France" is a key in the dictionary. "Paris" is its value.
+'Paris'
+>>> len(capitals)
+4
+```
+
+Not that the key-value pairs are not displayed in the order they were entered.  
+Dictionaries are _unrodered_ objects.
+
+If the key is not present in a dictionary, a _KeyError_ exception is raised:  
+
+```python
+>>> capitals["Norway"]
+KeyError                                  Traceback (most recent call last)
+<ipython-input-15-7127c6ffa0ad> in <module>()
+----> 1 capitals["Norway"]
+
+KeyError: 'Norway'
+```
+
+If you don't want to obtain an exception when trying to access the value of a non-existent key, use the _get()_ method:  
+
+```python
+>>> capitals.get("France", "Unknown")
+'Paris'
+>>> capitals.get("Norway", "Unknown")
+'Unknown'
+```
+
+The second parameter passed to the _get()_ method is the value to be returned when the key is _not_ present in the dictionary.  
+
+The keys in a dictionary must be _imutable_ objects.  
+Dictionaries are mutable objects. We can modify the value associated to a certain key.  
+
+```python
+>>> capitals["France"] = "paris"
+>>> capitals["France"]
+'paris'
+>>> capitals["France"] = "Paris"
+```
+
+You can add more _key-value_ pairs in a dictionary:  
+
+```python
+>>> capitals["Spain"] = "Madrid"
+>>> capitals
+{'France': 'Paris',
+ 'Germany': 'Berlin',
+ 'Italy': 'Rome',
+ 'Spain': 'Madrid',
+ 'United Kingdom': 'London'}
+```
+
+You can remove a _key-value_ pair from a dictionary using _del_:  
+
+```python
+>>> del capitals["Spain"]
+>>> capitals
+{'France': 'Paris',
+ 'Germany': 'Berlin',
+ 'Italy': 'Rome',
+ 'United Kingdom': 'London'}
+```
+
+You can iterate over the _keys_ in a dictionary as follows:  
+
+```python
+>>> for country in capitals:
+>>>     print("{}->{}".format(country, capitals[country]), end=' ')
+France->Paris Germany->Berlin Italy->Rome United Kingdom->London
+```
+
+This is the same as:  
+
+```python
+>>> for country in capitals.keys():
+>>>     print("{}->{}".format(country, capitals[country]), end=' ')
+France->Paris Germany->Berlin Italy->Rome United Kingdom->London
+```
+
+You can iterate over the _values_ in a dictionary as follows:  
+
+```python
+>>> for capital in capitals.values():
+>>>     print(capital, end=' ')
+Paris Berlin Rome London
+```
+
+You can iterate over the _key-value pairs_ in a dictionary as follows:
+
+```python
+>>> for country, capital in capitals.items():
+>>>     print("{}->{}".format(country, capital), end=' ')
+France->Paris Germany->Berlin Italy->Rome United Kingdom->London
+```
+
+A dictionary can be constructed from two sequences using the _zip()_ function.  
+The first sequence contains the keys and the second the values.  
+
+```python
+>>> asian_capitals = dict(zip(("China", "Japan"), ("Beijing", "Tokyo")))
+>>> asian_capitals
+{'China': 'Beijing', 'Japan': 'Tokyo'}
+```
+
+The same thing could have been accomplished by using a _dictionary comprehension_: 
+
+```python
+>>> asian_capitals = {country: capital for (country, capital) in zip(("China", "Japan"), ("Beijing", "Tokyo"))}
+>>> asian_capitals
+{'China': 'Beijing', 'Japan': 'Tokyo'}
+```
+
+A dictionary can also be merged with the content of another dictionary using the _update()_ method:  
+
+```python
+>>> capitals.update(asian_capitals)
+>>> capitals
+{'China': 'Beijing',
+ 'France': 'Paris',
+ 'Germany': 'Berlin',
+ 'Italy': 'Rome',
+ 'Japan': 'Tokyo',
+ 'United Kingdom': 'London'}
+```
+
+The content of a dictionary can be cleared by using the _clear()_ method:  
+
+```python
+>>> capitals.clear()
+>>> capitals
+{}
+```
