@@ -429,6 +429,15 @@ You can add more _key-value_ pairs in a dictionary:
  'United Kingdom': 'London'}
 ```
 
+You can test if a key is present in a dictionary using _in_:  
+
+```python
+>>> "France" in capitals
+True
+>>> "Sweden" in capitals
+False
+```
+
 You can remove a _key-value_ pair from a dictionary using _del_:  
 
 ```python
