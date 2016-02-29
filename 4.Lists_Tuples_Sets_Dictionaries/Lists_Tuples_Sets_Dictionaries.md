@@ -75,13 +75,6 @@ True
 False
 ```
 
-Lists can be concatenated using the _+_ operator:  
-
-```python
->>> countries += ["Ireland", "Norway"]
-['Japan', 'Germany', 'Italy', 'Argentina', 'Ireland', 'Norway']
-```
-
 Lists can be iterated using the _for_ statement.  
 The iteration is done in the order in which the elements were added to the list.
 
@@ -89,6 +82,14 @@ The iteration is done in the order in which the elements were added to the list.
 >>> for country in countries:
 >>>     print(country, end='')
 Japan Germany Italy Argentina
+```
+
+Lists can be concatenated using the _+_ operator:  
+
+```python
+>>> countries += ["Ireland", "Norway"]
+>>> countries
+['Japan', 'Germany', 'Italy', 'Argentina', 'Ireland', 'Norway']
 ```
 
 #### 4.1.2 Lists comprehensions
