@@ -50,8 +50,7 @@ Note: on Windows systems you will also need to install the _pyreadline_ package 
     pip install pyreadline ipython
 
 #### 1.3.3 Install code checking tools
-During this course we will use the _pylint_ static code checking tool.
-Install them as usually:
+During this course we will use the _pylint_ static code checking tool. Install it as usually:
 
     pip install pylint
 
