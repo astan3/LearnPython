@@ -64,8 +64,25 @@ For example, to remove the first element equal to 'Great Britain':
 ['Japan', 'Germany', 'Italy', 'Argentina']
 ```
 
+We can test if an element belongs to a list using the _in_ operator.  
+
+```python
+>>> "Germany" in countries
+True
+>>> "China" in countries
+False
+```
+
+Lists can be concatenated using the _+_ operator:  
+
+```python
+>>> countries += ["Ireland", "Norway"]
+['Japan', 'Germany', 'Italy', 'Argentina', 'Ireland', 'Norway']
+```
+
 #### 4.1.2 Iterating over lists
-The _for_ statement can be used to iterate over sequences. This means that it applies to lists too.  
+Lists can be iterated using the _for_ statement.  
+The iteration is done in the order in which the elements were added to the list.
 
 ```python
 >>> for country in countries:
@@ -163,5 +180,85 @@ If we really want to create a deep copy, we can use the _deepcopy()_ function fr
 We can see that this time, the copy remained unchanged after the original has changed.
 
 ### 4.2 Tuples
-_Tuples_ are _immutable_ sequences of objects having arbitrary types.
+_Tuples_ are _immutable_ sequences of objects having arbitrary types.  
+They share a lot of similarities with lists, but, unlike lists, are immutable.  
+Because tuples are immutable they use a more compact representation and allocates less memory than lists. 
+Tuples can be created by enclosing a group of values in paranthesis.  
 
+```python
+>>> person1 = ("John", 30, 726998343)
+>>> person1
+('John', 30, 726998343)
+>>> len(person1)
+3
+>>> person1_name = ("John",)           # One element tuple.
+>>> person1_name
+('John',)
+>>> name = ("John")                    # A string, not a tuple.
+>>> name
+'John'
+>>> "John" in person1
+True
+>>> "Alex" in person1
+False
+```
+
+Like lists, tuples can be indexed by integers, sliced and concatenated.
+Unlike lists, they do not support comprehensions (there is no tuple comprehension)
+
+```python
+>>> person1[0]
+'John'
+>>> person1[1]
+30
+>>> person1[2]
+726998343
+>>> person1[1:]
+(30, 726998343)
+>>> person2 = ("Mike", 25, 726339362)
+>>> person2
+('Mike', 25, 726339362)
+>>> persons = person1 + person2
+>>> persons
+('John', 30, 726998343, 'Mike', 25, 726339362)
+>>> len(persons)
+6
+```
+
+Tuples can be iterated using the _for_ statement.  
+
+```python
+>>> all_persons = (person1, person2)
+>>> all_persons
+(('John', 30, 726998343), ('Mike', 25, 726339362))
+>>> len(all_persons)
+2
+>>> for name, age, telephone in all_persons:
+>>>     print("name:", name)
+>>>     print("age:", age)
+>>>     print("tel:", telephone)
+name: John
+age: 30
+tel: 726998343
+name: Mike
+age: 25
+tel: 726339362
+>>> ('Mike', 25, 726339362) in all_persons
+True
+>>> ('Jack', 25, 726339362) in all_persons
+False
+```
+
+Tuples are immutable. Trying to modify a tuple will raise a _TypeError_ exception.
+
+```python
+>>> person1[0] = "Michael"
+TypeError                                 Traceback (most recent call last)
+<ipython-input-21-6b8f99475328> in <module>()
+----> 1 person1[0] = "Michael"
+
+TypeError: 'tuple' object does not support item assignment
+```
+
+### 4.3 Sets
+_Sets_ are _unordered_ collection of objects.  

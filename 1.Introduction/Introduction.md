@@ -50,10 +50,10 @@ Note: on Windows systems you will also need to install the _pyreadline_ package 
     pip install pyreadline ipython
 
 #### 1.3.3 Install code checking tools
-During this course we will use the _pylint_ and _flake8_ static code checking tools.
+During this course we will use the _pylint_ static code checking tool.
 Install them as usually:
 
-    pip install pylint flake8
+    pip install pylint
 
 ### 1.4 Text editors and Integrated Development Environments
 You will need a _text editor_ or an _Integrated Development Environment_ (_IDE_) with Python support.
