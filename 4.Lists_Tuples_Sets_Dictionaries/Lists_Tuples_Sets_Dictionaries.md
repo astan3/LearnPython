@@ -343,6 +343,7 @@ Sets also supports _union_,  _intersection_ and _difference_ operations.
 {5, 6}
 >>> s1 ^ s2            # Symmetric difference (items in s1 or in s2, but not in both)
 {1, 2, 5, 6}
+```
 
 Sets also supports _comprehension_.  
 
@@ -362,3 +363,4 @@ This is equivalent to:
 >>> even
 {2, 4, 6, 8}
 ```
+
