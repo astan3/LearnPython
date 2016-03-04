@@ -1,10 +1,10 @@
 # LearnPython
 An introduction to Python for beginners.
 
-[Introduction](1.Introduction/Introduction.md)  
-[Basics](2.Basics/Basics.md)  
-[Control flow](3.Control_flow/Control_Flow.md)  
-[Lists, tuples, sets and dictionaries](4.Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
+[Introduction](Introduction/Introduction.md)  
+[Basics](Basics/Basics.md)  
+[Control flow](Control_flow/Control_Flow.md)  
+[Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 Functions  
 Basic objects  
 Exceptions  
