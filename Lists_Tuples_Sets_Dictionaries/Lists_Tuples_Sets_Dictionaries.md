@@ -287,6 +287,10 @@ To create an _emtpy_ set, use the _set()_ function without any parameter.
 {1, 2, 7, 8, 9}                  # Note that the duplicates were removed.
 ```
 
+This set can be visualized as follows:  
+
+![The s set](img/Set.png)
+
 Unlike strings, lists and tuples, sets _cannot be indexed by integers_.  
 Trying to do this will raise a _TypeError_ exception.  
 
