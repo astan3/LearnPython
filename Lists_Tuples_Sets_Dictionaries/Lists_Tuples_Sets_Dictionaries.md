@@ -1,8 +1,8 @@
 ## 4. Lists, tuples, sets and dictionaries
 ### 4.1 Lists
 #### 4.1.1 Lists basics
-_Lists_ are mutable sequences of objects having arbitrary types.  
-You can create a list by enclosing values in square brackets.  
+_Lists_ are _mutable_ sequences of objects having arbitrary types.  
+You can create a list by enclosing values in _squared brackets_.  
 Another way to create a list is to use the _list()_ function and provide a sequence of elements.  
    
 ```python
@@ -169,6 +169,7 @@ To see the difference between a _shallow_ and a _deep copy_, let's consider anot
 ```
 
 This can be visualized as follows:  
+
 ![Shallow copy](img/Shallow_copy.png)
 
 The explanation, in this case, is that both _person1[2]_ and _person2[2]_ reference the same object.  
