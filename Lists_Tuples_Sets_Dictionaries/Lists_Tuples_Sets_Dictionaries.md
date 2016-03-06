@@ -131,7 +131,11 @@ But let's see what happend when we modify _l1_:
 ```
 
 We can see that _l1_ was modified as expected. But we can also see that _l2_ was also modified.  
-This is because _both l1 and l2 refers to the same object_ and that object was modified.
+This is because _both l1 and l2 refers to the same object_ and that object was modified.  
+
+This can be visualized as follows:  
+
+![Aliasing](img/Aliasing.png)
 
 We can create a shallow copy of _l1_ as follows:  
 
