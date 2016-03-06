@@ -11,7 +11,7 @@ Another way to create a list is to use the _list()_ function and provide a seque
 ['France', 'Great Britain', 'Germany', 'United States']
 ```
 Lists can be _indexed_ by integers, starting from _zero_.  
-The list can be visualized as follows:  
+The countries list can be visualized as follows:     
 ![countries list](img/Lists.png)  
 
 To find out the length o a list, use the built-in _len_ function.  
