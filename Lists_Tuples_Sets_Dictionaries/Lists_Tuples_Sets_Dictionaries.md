@@ -168,6 +168,9 @@ To see the difference between a _shallow_ and a _deep copy_, let's consider anot
 ['John', 25, ['C', 'Java', 'Python']]
 ```
 
+This can be visualized as follows:  
+![Shallow copy](img/Shallow_copy.png)
+
 The explanation, in this case, is that both _person1[2]_ and _person2[2]_ reference the same object.  
 If we really want to create a deep copy, we can use the _deepcopy()_ function from the standard library _copy_ module.  
 
