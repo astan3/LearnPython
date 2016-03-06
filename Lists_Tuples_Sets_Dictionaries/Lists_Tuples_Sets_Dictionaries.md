@@ -151,7 +151,7 @@ We can create a shallow copy of _l1_ as follows:
 
 So, we can see that, in this case, _l2_ was not modified when _l1_ changed.  
 We have created a _shallow copy_ of _l1_. We _did not_ created a _deep copy_.  
-To see the difference between a shallow and a deep copy, let's consider another example.
+To see the difference between a _shallow_ and a _deep copy_, let's consider another example.
 
 ```python
 >>> person1 = ["John", 25, ["C", "Java"]]
