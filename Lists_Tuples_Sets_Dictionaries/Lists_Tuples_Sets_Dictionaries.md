@@ -218,6 +218,10 @@ If we really want to create a deep copy, we can use the _deepcopy()_ function fr
 ['John', 25, ['C', 'Java']]
 ```
 
+This can be visualized as follows:  
+
+![Deep copy](img/Deep_copy.png)
+
 We can see that this time, the copy remained unchanged after the original has changed.
 
 ### 4.2 Tuples
@@ -517,8 +521,7 @@ If you don't want to obtain an exception when trying to access the value of a no
 ```
 
 The second parameter passed to the _get()_ method is the value to be returned when the key is _not_ present in the dictionary.  
-
-The keys in a dictionary must be _imutable_ objects.  
+ 
 Dictionaries are mutable objects. We can modify the value associated to a certain key.  
 
 ```python
