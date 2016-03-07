@@ -137,7 +137,7 @@ Of course, we can proceed like this:
 ['Germany', 'Argentina', 'Ireland']
 ```
 
-There is more succint way to accomplish this by using a _list comprehension_:    
+There is a more succint way to accomplish this by using a _list comprehension_:    
 
 ```python
 >>> filtered_countries = [country for country in countries if len(country) > 6]
@@ -153,7 +153,11 @@ Let's say we want to create a copy of a list. We might try to proceed like this:
 >>> l2 = l1
 ```
 
-But let's see what happend when we modify the object referred by _l1_:  
+This can be visualized as follows:  
+
+![Aliasing](img/Aliasing.png)
+
+Let's see what happend when we modify the object referred by _l1_:  
 
 ```python
 >>> l1[0] = 4
@@ -164,11 +168,6 @@ But let's see what happend when we modify the object referred by _l1_:
 ```
 
 As we have seen when we have discussed about variables, this is because _both l1 and l2 refer to the same object_ and that object was modified.  
-
-This can be visualized as follows:  
-
-![Aliasing](img/Aliasing.png)
-
 If we don't want this to happen, we need to create a _copy_ of the object referred by _l1_.  
 There are two types of copies: _shallow_ and _deep_. We can create a _shallow copy_ of _l1_ as follows:  
 
@@ -593,7 +592,7 @@ You can iterate over the _key-value pairs_ in a dictionary as follows:
 
 ```python
 >>> for country, capital in capitals.items():
->>>     print("{}->{}".format(country, capital), end=' ')
+>>>     print("{}-{}".format(country, capital), end=' ')
 France-Paris Germany-Berlin Italy-Rome United Kingdom-London
 ```
 
@@ -647,7 +646,7 @@ The content of a dictionary can be cleared by using the _clear()_ method:
 - If you want to associate a key with a value so that given a key to quickly find out its associated value, use a _dictionary_.
   However, when using a _dictionary_, be aware that the key-value pairs are not stored in the order of their insertion.
   If you do need a dictionary in which the key-value pairs to be stored in the order of their insertion, take a look at _OrderedDict_, from the standard _collections_ module.
-  However, note searching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
+  However, note that searching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
 
 ### 4.7 Exercies
 __4.7.1__ Explain conceptually how would could you implement an _OrderedDict_.  
