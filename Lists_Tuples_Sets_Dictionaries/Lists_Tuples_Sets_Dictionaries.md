@@ -125,20 +125,24 @@ The _sorted()_ function returns _a new list_ containing the sorted elements.
 ``` 
 
 #### 4.1.2 Lists comprehensions
-Let's say we want to construct a list with all the even numbers from 1 to 99.  
-Of course, we can build it like this:  
+Let's say we want to extract the name of all countries which are longer than six characters, in another list.  
+Of course, we can proceed like this:  
 
 ```python
->>> numbers = []
->>> for i in range(1, 100):
->>>     if i % 2 == 0:
->>>         numbers.append(i)
+>>> filtered_countries = []
+>>>     for country in countries:
+>>>         if len(country) > 6:
+>>>            filtered_countries.append(country)
+>>> filtered_countries
+['Germany', 'Argentina', 'Ireland']
 ```
 
 There is more succint way to accomplish this by using a _list comprehension_:    
 
 ```python
->>> numbers = [i for i in range(1, 100) if i % 2 == 0]
+>>> filtered_countries = [country for country in countries if len(country) > 6]
+>>> filtered_countries
+['Germany', 'Argentina', 'Ireland']
 ```
 
 #### 4.1.3 Copying lists
@@ -419,30 +423,28 @@ Sets also supports _union_,  _intersection_ and _difference_ operations.
 ```
 
 Sets also supports _comprehension_.  
+For example, here is how we can construct a set containing the even numbers from the set _s_ above:  
 
 ```python
->>> even = {i for i in range(1, 10) if i % 2 == 0}
+>>> even = {i for i in s if i % 2 == 0}
 >>> even
-{2, 4, 6, 8}
+{2, 100}
 ```
 
 This is equivalent to:  
 
 ```python
 >>> even = set()
->>> for i in range(1, 10):
+>>> for i in s:
 >>>     if i % 2 == 0:
 >>>         even.add(i)
 >>> even
-{2, 4, 6, 8}
+{2, 100}
 ```
 
 The content of a set can be cleared using the _clear()_ function.  
 
 ```python
->>> s = {1, 2, 3}
->>> s
-{1, 2, 3}
 >>> s.clear()
 >>> s
 set()
