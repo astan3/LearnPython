@@ -281,9 +281,16 @@ Another way to create a set is to use the _set()_ function and provide a sequenc
 To create an _emtpy_ set, use the _set()_ function without any parameter.   
 
 ```python
+>>> empty_set = set()
+>>> empty_set
+set()
+>>> len(empty_set)
+0
 >>> s = {9, 8, 1, 2, 1, 9, 8, 7}
 >>> s
 {1, 2, 7, 8, 9}                  # Note that the duplicates were removed.
+>>> len(s)
+5
 ```
 
 This set can be visualized as follows:  
@@ -303,10 +310,10 @@ TypeError                                 Traceback (most recent call last)
 TypeError: 'set' object does not support indexing
 ```
 The elements of a set are also called _keys_.  
-Set elements need to be _hashable_ objects. This means that, given a set element, we can compute a _hash value_ which never changes for the duration of the object life.  
-Python's immutable built-in objects are hashable.  
-This means, for example, that we can add objects like integers, bytes, strings in a set. But we cannot add objects as bytearrays or lists.  
-Let us see what happens if we try to create a set containing un-hashable objects.  
+Set elements need to be _hashable_ objects. This means that, given a set element, we can compute a _hash value_ which never changes for the duration of the object life.   
+For those who want to learn more about hashing, read this wikipedia page: https://en.wikipedia.org/wiki/Hash_table  
+This means, for example, that we can add objects like integers, bytes, strings in a set. But we cannot add objects as bytearrays or lists, since there are not hashable.  
+Let us see what happens if we try to create a set containing unhashable objects.  
 
 ```python
 >>> my_list = [1, 2]
@@ -397,12 +404,24 @@ This is equivalent to:
 >>> even
 {2, 4, 6, 8}
 ```
+
+The content of a set can be cleared using the _clear()_ function.  
+
+```python
+>>> s = {1, 2, 3}
+>>> s
+{1, 2, 3}
+>>> s.clear()
+>>> s
+set()
+```
+
 ### 4.4 Frozen sets
 _Frozen sets_ are _immutable_ sets. They are sets that cannot be modified.  
 That is, we cannot add more elements to a frozen set once it is created. Nor can we remove elements from it.  
 An example:  
 
-```
+```python
 >>> countries = frozenset(("Germany", "Italy", "France"))
 >>> countries
 frozenset({'France', 'Germany', 'Italy'})
@@ -427,6 +446,9 @@ The keys needs to be _hashable_ objects.
 Dictionaries can be created by enclosing the values inside curly braces, as follows:  
 
 ```python
+>>> empty_dict = {}
+>>> len(empty_dict)
+0
 >>> capitals = {"United Kingdom" : "London", "France" : "Paris", "Italy" : "Rome", "Germany" : "Berlin"}
 >>> capitals
 {'France': 'Paris',
