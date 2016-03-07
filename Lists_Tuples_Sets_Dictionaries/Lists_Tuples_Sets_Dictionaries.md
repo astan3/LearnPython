@@ -275,7 +275,7 @@ TypeError: 'tuple' object does not support item assignment
 ```
 
 ### 4.3 Sets
-_Sets_ are _unordered_ collection of _unique_ objects. A set _cannot contain duplicates_.  
+_Sets_ are _mutable_ _unordered_ collection of _unique_ objects. A set _cannot contain duplicates_.  
 Sets can be created by enclosing a group of values in curly braces.  
 Another way to create a set is to use the _set()_ function and provide a sequence of elements.  
 To create an _emtpy_ set, use the _set()_ function without any parameter.   
@@ -290,6 +290,7 @@ This set can be visualized as follows:
 
 ![The s set](img/Set.png)
 
+As you can see, the elements in the set were not stored in a specific order.  
 Unlike strings, lists and tuples, sets _cannot be indexed by integers_.  
 Trying to do this will raise a _TypeError_ exception.  
 
@@ -301,6 +302,23 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: 'set' object does not support indexing
 ```
+The elements of a set are also called _keys_.  
+Set elements need to be _hashable_ objects. This means that, given a set element, we can compute a _hash value_ which never changes for the duration of the object life.  
+Python's immutable built-in objects are hashable.  
+This means, for example, that we can add objects like integers, bytes, strings in a set. But we cannot add objects as bytearrays or lists.  
+Let us see what happens if we try to create a set containing un-hashable objects.  
+
+```python
+>>> my_list = [1, 2]
+>>> broken_set = {my_list}
+TypeError                                 Traceback (most recent call last)
+<ipython-input-5-97a279f858c0> in <module>()
+----> 1 broken_set = {my_list}
+
+TypeError: unhashable type: 'list'
+```
+
+As you can see, an exception was raised.  
 
 You can add a new element in a set using the _add()_ method. 
 
@@ -379,9 +397,33 @@ This is equivalent to:
 >>> even
 {2, 4, 6, 8}
 ```
+### 4.4 Frozen sets
+_Frozen sets_ are _immutable_ sets. They are sets that cannot be modified.  
+That is, we cannot add more elements to a frozen set once it is created. Nor can we remove elements from it.  
+An example:  
 
-### 4.4 Dictionaries
+```
+>>> countries = frozenset(("Germany", "Italy", "France"))
+>>> countries
+frozenset({'France', 'Germany', 'Italy'})
+>>> "France" in countries
+True
+>>> "Argentina" in countries
+False
+>>> for country in countries:
+>>>     print(country, end=' ')
+France Italy Germany
+>>> countries.add("Argentina")
+AttributeError                            Traceback (most recent call last)
+<ipython-input-11-836183644535> in <module>()
+----> 1 countries.add("Argentina")
+
+AttributeError: 'frozenset' object has no attribute 'add'
+```
+
+### 4.5 Dictionaries
 _Dictionaries_ are associative arrays, mapping keys to values.  
+The keys needs to be _hashable_ objects.  
 Dictionaries can be created by enclosing the values inside curly braces, as follows:  
 
 ```python
@@ -468,16 +510,16 @@ You can iterate over the _keys_ in a dictionary as follows:
 
 ```python
 >>> for country in capitals:
->>>     print("{}->{}".format(country, capitals[country]), end=' ')
-France->Paris Germany->Berlin Italy->Rome United Kingdom->London
+>>>     print("{}-{}".format(country, capitals[country]), end=' ')
+France-Paris Germany-Berlin Italy-Rome United Kingdom-London
 ```
 
 This is the same as:  
 
 ```python
 >>> for country in capitals.keys():
->>>     print("{}->{}".format(country, capitals[country]), end=' ')
-France->Paris Germany->Berlin Italy->Rome United Kingdom->London
+>>>     print("{}-{}".format(country, capitals[country]), end=' ')
+France-Paris Germany-Berlin Italy-Rome United Kingdom-London
 ```
 
 You can iterate over the _values_ in a dictionary as follows:  
@@ -493,7 +535,7 @@ You can iterate over the _key-value pairs_ in a dictionary as follows:
 ```python
 >>> for country, capital in capitals.items():
 >>>     print("{}->{}".format(country, capital), end=' ')
-France->Paris Germany->Berlin Italy->Rome United Kingdom->London
+France-Paris Germany-Berlin Italy-Rome United Kingdom-London
 ```
 
 A dictionary can be constructed from two sequences using the _zip()_ function.  
