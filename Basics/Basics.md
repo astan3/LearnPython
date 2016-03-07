@@ -257,7 +257,8 @@ For example:
 3077620896
 ```
 
-We can see that _x_ and _y_ contain the same unique identifier. This is because _both variables refer to the same object_.  
+We can see that _x_ and _y_ contain the same unique identifier. This is because _both variables refer to the same object_.
+Of course, when running the examples on your computer you will most likely obtain other values for unique identifiers.    
 This can be visualized as follows:  
 
 ![Variables](img/Variables.png)
@@ -269,7 +270,7 @@ Let's increment the variable _x_:
 >>> x
 8
 >>> id(x)
-3077338288
+3077620918
 ```
 
 In this case, after the increment, _a new integer object was created_, having the value equal to 8.  
