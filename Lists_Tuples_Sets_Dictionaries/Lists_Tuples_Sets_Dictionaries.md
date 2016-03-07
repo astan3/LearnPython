@@ -645,15 +645,19 @@ The content of a dictionary can be cleared by using the _clear()_ method:
   However, note searching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
 
 ### 4.7 Exercies
-_4.7.1_ Explain how would could you implement an OrderedDict.  
-_4.7.2_ Explain how could you associate multiple values to a key, in a dictionary.  
-_4.7.3_ Write a script that prints the unique elements in a list while maintaining order.  
+__4.7.1__ Explain how would could you implement an OrderedDict.  
+__4.7.2__ Explain how could you associate multiple values to a key, in a dictionary.  
+__4.7.3__ Write a script that prints the unique elements in a list while maintaining order.  
 For example, if the list is [1, 4, 3, 1, 2, 3, 5, 4], the program will display:  
 1 4 3 2 5  
-_4.7.4_ Given a list of words (strings), write a script that display the most frequently occuring word.  
+__4.7.4__ Given a list of words (strings), write a script that display the most frequently occuring word.  
 If there are more than one word with the maximum frequency, all the words are displayed.  
-_4.7.4_ Write a script that inverts a dictionary.  
+__4.7.4__ Write a script that inverts a dictionary.  
 For example, given the dictionary:  
-{"Python": 1, "C": 2, "C++": 2, "Java": 3, "Go": 3, "Perl": 4}  
+```python
+{"Python": 1, "C": 2, "C++": 2, "Java": 3, "Go": 3, "Perl": 4}
+```
 the following dictionary should result:  
-{1: "Python", 2: {"C", "C++"}, 3: {"Java", "Go"}, 4: "Perl"}  
+```python
+{1: "Python", 2: {"C", "C++"}, 3: {"Java", "Go"}, 4: "Perl"}
+```
