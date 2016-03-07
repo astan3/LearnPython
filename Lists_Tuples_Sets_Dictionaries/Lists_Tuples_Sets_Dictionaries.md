@@ -635,4 +635,9 @@ The content of a dictionary can be cleared by using the _clear()_ method:
   By using a _list_ or a _tuple_, you can iterate the elements in the order of their insertion and you can index by integer.
 - If you need to be able to keep a collection of unique elements use a _set_ (or a _frozen set_, if you don't need a mutable _set_).
 - If you want to keep a dynamic collection of elements for which to be able to test quickly if an element belongs to, use a _set_.
+  However, when using a _set_, be aware that the elements won't be stored in the order of their insertion and that you cannot index by integer.
 - If you want to associate a key with a value so that given a key to quickly find out its associated value, use a _dictionary_.
+  However, when using a _dictionary_, be aware that the key-value pairs are not stored in the order of their insertion.
+  If you do need a dictionary in which the key-value pairs to be stored in the oder of their insertion, take a look at _OrderedDict_, from the standard _collections_ module.
+  However, note seraching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
+
