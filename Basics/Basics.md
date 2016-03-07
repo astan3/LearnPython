@@ -218,13 +218,13 @@ Because byte arrays are mutable, we can modify their content. For example, we ca
 
 ```python
 >>> b = bytearray(b"Python")
->>> b[0] = ord('C')                      # Change the first element from 'P' to 'C'.
+>>> b[0] = ord(b'C')                      # Change the first element from 'P' to 'C'.
 >>> b
 bytearray(b'Cython')
->>> b.append(ord('x'))                   # Append 'x'.
+>>> b.append(ord(b'x'))                   # Append 'x'.
 >>> b
 bytearray(b'Cythonx')
->>> b.insert(1, ord('z'))                # Insert 'z' at index 1.
+>>> b.insert(1, ord(b'z'))                # Insert 'z' at index 1.
 >>> b
 bytearray(b'Czythonx')
 >>> b.hex()
@@ -239,12 +239,12 @@ _NoneType_ is a type that has only one value, _None_. _None_ is frequently used 
 This is conceptually similar to a _null_ reference in _Java_.
 
 ### 2.4 Variables
-A variable is a name (a tag) associated (bound) to an _object_. We say that the variable _refers_ the object.  
+A variable is a name (a tag) associated (bound) to an _object_. We say that the variable _refer_ the object.  
 The object has a specific type. The variable does _not_ have a type.  
 During the execution of a program, the same variable can be reassigned to objects of various types.  
 Each object has an _unique identifier_ (this unique identifier is actually the object address in memory).  
-A variable which refers an object contains the object's unique identifier.  
-We can find out the unique identifier of an object using the _id()_ function.  
+A variable which refer an object contains the object's unique identifier.  
+We can find out the unique identifier of a referred object using the _id()_ function.  
 
 For example:  
 
@@ -257,8 +257,36 @@ For example:
 3077620896
 ```
 
-We can see that _x_ and _y_ contain the same unique identifier. This is because the refer to the same object.  
+We can see that _x_ and _y_ contain the same unique identifier. This is because _both variables refer to the same object_.  
 This can be visualized as follows:  
 
 ![Variables](img/Variables.png)
 
+_Mutable_ objects can be modified. Let's use again a slightly modified example from the _Byte arrays_ section:  
+
+```python
+>>> b1 = bytearray(b"Python")
+>>> b1
+bytearray(b'Python')
+>>> b1[0] = ord(b'C')
+>>> b1
+bytearray(b'Cython')
+```
+Here, the variable _b1_ refer a (mutable) _bytearray_ object. We modify the referred object through the _b1_ variable.  
+Let's see what happens when we have two variables that refer the same mutable object and we modify that object.  
+
+```python
+>>> b2 = b1
+>>> b2
+bytearray(b'Cython')
+>>> b1[0] = ord(b'X')
+>>> b1
+bytearray(b'Xython')
+>>> b2
+bytearray(b'Xython')
+```
+
+We have modified that object through the _b1_ variable.  
+But, because both _b1_ and _b2_ refer to the same object, we can see the changes also when we access the object using the _b2_ variable.
+If we don't want this to happen, we need to create a _copy_ of the object, so that the two variable to refer two different objects.  
+We will see how this can be achieved when we will discuss about _lists_.

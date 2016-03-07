@@ -121,7 +121,7 @@ Let's say we want to create a copy of a list. We might try to proceed like this:
 >>> l2 = l1
 ```
 
-But let's see what happend when we modify _l1_:  
+But let's see what happend when we modify the object referred by _l1_:  
 
 ```python
 >>> l1[0] = 4
@@ -131,14 +131,14 @@ But let's see what happend when we modify _l1_:
 [4, 2, 3]
 ```
 
-We can see that _l1_ was modified as expected. But we can also see that _l2_ was also modified.  
-This is because _both l1 and l2 refers to the same object_ and that object was modified.  
+As we have seen when we have discussed about variables, this is because _both l1 and l2 refer to the same object_ and that object was modified.  
 
 This can be visualized as follows:  
 
 ![Aliasing](img/Aliasing.png)
 
-We can create a shallow copy of _l1_ as follows:  
+If we don't want this to happen, we need to create a _copy_ of the object referred by _l1_.  
+There are two types of copies: _shallow_ and _deep_. We can create a _shallow copy_ of _l1_ as follows:  
 
 ```python
 >>> l1 = [1, 2, 3]
@@ -150,8 +150,7 @@ We can create a shallow copy of _l1_ as follows:
 [1, 2, 3]
 ```
 
-So, we can see that, in this case, _l2_ was not modified when _l1_ changed.  
-We have created a _shallow copy_ of _l1_. We _did not_ created a _deep copy_.  
+So, we can see that, in this case, there was no problem because _l1_ and _l2_ refer two different objects.  
 To see the difference between a _shallow_ and a _deep copy_, let's consider another example.
 
 ```python
@@ -173,7 +172,7 @@ This can be visualized as follows:
 
 ![Shallow copy](img/Shallow_copy.png)
 
-The explanation, in this case, is that both _person1[2]_ and _person2[2]_ reference the same object.  
+The explanation, in this case, is that even if _person2_ is a shallow copy of _person1_, both _person1[2]_ and _person2[2]_ refer the same object.  
 If we really want to create a deep copy, we can use the _deepcopy()_ function from the standard library _copy_ module.  
 
 ```python
