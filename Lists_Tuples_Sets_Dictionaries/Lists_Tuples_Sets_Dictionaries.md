@@ -223,7 +223,7 @@ We can see that this time, the copy remained unchanged after the original has ch
 ### 4.2 Tuples
 _Tuples_ are _immutable_ sequences of objects having arbitrary types.  
 They share a lot of similarities with lists, but, unlike lists, are immutable.  
-Because tuples are immutable they use a more compact representation and allocates less memory than lists. 
+Because tuples are immutable they use less memory than lists.  
 Tuples can be created by enclosing a group of values in paranthesis.  
 Another way to create a tuple is to use the _tuple()_ function and provide a sequence of elements.  
 
@@ -634,10 +634,26 @@ The content of a dictionary can be cleared by using the _clear()_ method:
 - If you need only a simple sequence of elements you can use a _list_ or a _tuple_ (depending if you want a mutable or immutable sequence). 
   By using a _list_ or a _tuple_, you can iterate the elements in the order of their insertion and you can index by integer.
 - If you need to be able to keep a collection of unique elements use a _set_ (or a _frozen set_, if you don't need a mutable _set_).
-- If you want to keep a dynamic collection of elements for which to be able to test quickly if an element belongs to, use a _set_.
+- If you want to keep a dynamic collection of elements for which to be able to test quickly if an element belongs to it, use a _set_.
+  Yes, you might use a _list/tuple_ and iterate over it to find if an element belongs to it, but using sets is way faster for this.
   However, when using a _set_, be aware that the elements won't be stored in the order of their insertion and that you cannot index by integer.
+  So, you can use _sets_ only if you don't care to remember the order in which the elements were added to the collection.
+- If you need to quickly perform _union_, _intersection_ or _difference_ operations between two or more collections, use _sets_. 
 - If you want to associate a key with a value so that given a key to quickly find out its associated value, use a _dictionary_.
   However, when using a _dictionary_, be aware that the key-value pairs are not stored in the order of their insertion.
-  If you do need a dictionary in which the key-value pairs to be stored in the oder of their insertion, take a look at _OrderedDict_, from the standard _collections_ module.
-  However, note seraching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
+  If you do need a dictionary in which the key-value pairs to be stored in the order of their insertion, take a look at _OrderedDict_, from the standard _collections_ module.
+  However, note searching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
 
+### 4.7 Exercies
+_4.7.1_ Explain how would could you implement an OrderedDict.  
+_4.7.2_ Explain how could you associate multiple values to a key, in a dictionary.  
+_4.7.3_ Write a script that prints the unique elements in a list while maintaining order.  
+For example, if the list is [1, 4, 3, 1, 2, 3, 5, 4], the program will display:  
+1 4 3 2 5  
+_4.7.4_ Given a list of words (strings), write a script that display the most frequently occuring word.  
+If there are more than one word with the maximum frequency, all the words are displayed.  
+_4.7.4_ Write a script that inverts a dictionary.  
+For example, given the dictionary:  
+{"Python": 1, "C": 2, "C++": 2, "Java": 3, "Go": 3, "Perl": 4}  
+the following dictionary should result:  
+{1: "Python", 2: {"C", "C++"}, 3: {"Java", "Go"}, 4: "Perl"}  
