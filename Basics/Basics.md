@@ -262,7 +262,21 @@ This can be visualized as follows:
 
 ![Variables](img/Variables.png)
 
-_Mutable_ objects can be modified. Let's use again a slightly modified example from the _Byte arrays_ section:  
+Let's increment the variable _x_:  
+
+```python
+>>> x = x + 1
+>>> x
+8
+>>> id(x)
+3077338288
+```
+
+In this case, after the increment, _a new integer object was created_, having the value equal to 8.  
+The _x_ variable was _reassigned_ to the newly created object. That is, after the increment, the _x_ variable refer to the newly created object.  
+
+Let us see what might happen when two variables refer to the same _mutable_ object.  
+We will use a slightly modified example from the _Byte arrays_ section:  
 
 ```python
 >>> b1 = bytearray(b"Python")
