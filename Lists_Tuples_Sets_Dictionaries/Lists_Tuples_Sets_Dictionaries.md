@@ -629,3 +629,12 @@ The content of a dictionary can be cleared by using the _clear()_ method:
 >>> capitals
 {}
 ```
+
+### 4.6 What to use and when
+- If you need only a simple sequence of elements you can use a _list_ or a _tuple_ (depending if you want a mutable or immutable sequence).
+  By using a _list_ or a _tuple_, you can iterate the elements in the order of their insertion and you can index by integer.
+- If you need to be able to keep a collection of unique elements use a _set_ (or a _frozen set_, if you don't need a mutable set).
+- If you want to keep a dynamic collection of elements for which to be able to test quickly if an element belongs to, use a _set_.
+- If you want to associate a key with a value so that given a key to quickly find out its associated value, use a _dictionary_.
+
+- If you want to associate a key with a value so that given a key to quickly find out its associated value, use a _dictionary_.
