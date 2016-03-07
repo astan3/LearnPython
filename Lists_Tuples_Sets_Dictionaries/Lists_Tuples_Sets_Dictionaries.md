@@ -88,6 +88,14 @@ The iteration is done in the order in which the elements were added to the list.
 Japan Germany Italy Argentina
 ```
 
+If we need also the index of the current element while iterating, use the _enumerate()_ function:  
+
+```python
+>>> for i, country in enumerate(countries):
+>>>     print("{}:{}".format(i, country), end=' ')
+0:Japan 1:Germany 2:Italy 3:Argentina
+```
+
 Lists can be concatenated using the _+_ operator:  
 
 ```python
