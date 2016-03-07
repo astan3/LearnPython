@@ -104,6 +104,26 @@ Lists can be concatenated using the _+_ operator:
 ['Japan', 'Germany', 'Italy', 'Argentina', 'Ireland', 'Norway']
 ```
 
+Lists can be sorted using the _sort()_ method: 
+
+```python
+>>> countries.sort()
+>>> countries
+['Argentina', 'Germany', 'Ireland', 'Italy', 'Japan', 'Norway']
+```
+
+Note that the _sort()_ method modifies the list on which it is applied.  
+If what we actually want is to obtain a new list with the sorted elements and to leave the original list unchanged, use the _sorted()_ built-in function.  
+The _sorted()_ function returns _a new list_ containing the sorted elements.  
+
+```python
+>>> countries = ['Japan', 'Germany', 'Italy', 'Argentina', 'Ireland', 'Norway']
+>>> sorted(countries)
+['Argentina', 'Germany', 'Ireland', 'Italy', 'Japan', 'Norway']
+>>> countries
+['Japan', 'Germany', 'Italy', 'Argentina', 'Ireland', 'Norway']
+``` 
+
 #### 4.1.2 Lists comprehensions
 Let's say we want to construct a list with all the even numbers from 1 to 99.  
 Of course, we can build it like this:  
@@ -468,6 +488,10 @@ Dictionaries can be created by enclosing the values inside curly braces, as foll
 >>> len(capitals)
 4
 ```
+
+This dictionary can be visualized as follows:  
+
+![The capitals dictionary](img/Dictionary.png)
 
 Not that the key-value pairs are not displayed in the order they were entered.  
 Dictionaries are _unrodered_ objects.
