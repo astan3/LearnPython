@@ -9,13 +9,13 @@ Python represents block structure using indentation. Other languages uses bracke
 This is belived by many to increase the code redability.  
 _The indentation level is recommended to be set to 4 spaces and no hard tabs should be used._
 
-### 2.3 Variables and basic built-in types
-A variable is a name (a tag) associated (bound) to an _object_. Each object has a type.
+### 2.3 Basic built-in types
 Python has many built-in types (all of them are presented in the official documentation: https://docs.python.org/3/library/stdtypes.html)  
 Here are some basic built-in types.
 
 #### 2.3.1 Numeric types
 Python has _integers_, _floats_ and _complex_ numbers.
+Python's numeric types are _immutable_. By this we mean that objects of that type are _unmodifiable_.  
 For example:
 
 ```python
@@ -28,7 +28,7 @@ A boolean object can be either _True_ or _False_.
 
 #### 2.3.3 Strings
 Strings are used to handle _texts_. Strings are sequences of _Unicode code points_.
-Strings are also immutable (unmodifiable).  
+Strings are also _immutable_.  
 There are several ways to specify strings:
 
 ```python
@@ -237,3 +237,28 @@ b'Czythonx'
 
 _NoneType_ is a type that has only one value, _None_. _None_ is frequently used to indicate _the absence of a value_.
 This is conceptually similar to a _null_ reference in _Java_.
+
+### 2.4 Variables
+A variable is a name (a tag) associated (bound) to an _object_. We say that the variable _refers_ the object.  
+The object has a specific type. The variable does _not_ have a type.  
+During the execution of a program, the same variable can be reassigned to objects of various types.  
+Each object has an _unique identifier_ (this unique identifier is actually the object address in memory).  
+A variable which refers an object contains the object's unique identifier.  
+We can find out the unique identifier of an object using the _id()_ function.  
+
+For example:  
+
+```python
+>>> x = 7
+>>> id(x)
+3077620896
+>>> y = x
+>>> id(y)
+3077620896
+```
+
+We can see that _x_ and _y_ contain the same unique identifier. This is because the refer to the same object.  
+This can be visualized as follows:  
+
+![Variables](img/Variables.png)
+
