@@ -646,13 +646,13 @@ The content of a dictionary can be cleared by using the _clear()_ method:
   However, note that searching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
 
 ### 4.7 Exercies
-__4.7.1__ Explain conceptually how would could you implement an _OrderedDict_.  
+__4.7.1__ Explain conceptually how could you implement an _OrderedDict_.  
 __4.7.2__ Explain how could you associate multiple values to a key, in a dictionary.  
 __4.7.3__ Write a script that prints the unique elements in a list while maintaining order.  
 For example, if the list is _[1, 4, 3, 1, 2, 3, 5, 4]_, the program will display:  
 1 4 3 2 5  
 __4.7.4__ Given a list of words (strings), write a script that display the most frequently occuring word.  
-If there are more than one word with the maximum frequency, all the words are displayed.  
+If there are more than one word with the maximum frequency, all the words will be displayed.  
 __4.7.4__ Write a script that inverts a dictionary.  
 For example, given the dictionary:  
 ```python
