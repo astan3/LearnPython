@@ -84,7 +84,7 @@ The iteration is done in the order in which the elements were added to the list.
 
 ```python
 >>> for country in countries:
->>>     print(country, end='')
+>>>     print(country, end=' ')
 Japan Germany Italy Argentina
 ```
 
