@@ -130,9 +130,9 @@ Of course, we can proceed like this:
 
 ```python
 >>> filtered_countries = []
->>>     for country in countries:
->>>         if len(country) > 6:
->>>            filtered_countries.append(country)
+>>> for country in countries:
+>>>     if len(country) > 6:
+>>>     filtered_countries.append(country)
 >>> filtered_countries
 ['Germany', 'Argentina', 'Ireland']
 ```
@@ -187,9 +187,6 @@ To see the difference between a _shallow_ and a _deep copy_, let's consider anot
 ```python
 >>> person1 = ["John", 25, ["C", "Java"]]
 >>> person2 = person1[:]
->>> person1[1] = 30
->>> person1
-['John', 30, ['C', 'Java']]
 >>> person2
 ['John', 25, ['C', 'Java']]
 >>> person1[2].append("Python")
