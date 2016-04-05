@@ -84,7 +84,7 @@ The iteration is done in the order in which the elements were added to the list.
 
 ```python
 >>> for country in countries:
->>>     print(country, end='')
+>>>     print(country, end=' ')
 Japan Germany Italy Argentina
 ```
 
@@ -130,9 +130,9 @@ Of course, we can proceed like this:
 
 ```python
 >>> filtered_countries = []
->>>     for country in countries:
->>>         if len(country) > 6:
->>>            filtered_countries.append(country)
+>>> for country in countries:
+>>>     if len(country) > 6:
+>>>     filtered_countries.append(country)
 >>> filtered_countries
 ['Germany', 'Argentina', 'Ireland']
 ```
@@ -187,9 +187,6 @@ To see the difference between a _shallow_ and a _deep copy_, let's consider anot
 ```python
 >>> person1 = ["John", 25, ["C", "Java"]]
 >>> person2 = person1[:]
->>> person1[1] = 30
->>> person1
-['John', 30, ['C', 'Java']]
 >>> person2
 ['John', 25, ['C', 'Java']]
 >>> person1[2].append("Python")
@@ -649,13 +646,13 @@ The content of a dictionary can be cleared by using the _clear()_ method:
   However, note that searching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
 
 ### 4.7 Exercies
-__4.7.1__ Explain conceptually how would could you implement an _OrderedDict_.  
+__4.7.1__ Explain conceptually how could you implement an _OrderedDict_.  
 __4.7.2__ Explain how could you associate multiple values to a key, in a dictionary.  
 __4.7.3__ Write a script that prints the unique elements in a list while maintaining order.  
 For example, if the list is _[1, 4, 3, 1, 2, 3, 5, 4]_, the program will display:  
 1 4 3 2 5  
 __4.7.4__ Given a list of words (strings), write a script that display the most frequently occuring word.  
-If there are more than one word with the maximum frequency, all the words are displayed.  
+If there are more than one word with the maximum frequency, all the words will be displayed.  
 __4.7.4__ Write a script that inverts a dictionary.  
 For example, given the dictionary:  
 ```python
