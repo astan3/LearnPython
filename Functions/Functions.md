@@ -193,7 +193,7 @@ In a nutshell, the scoping rules are:
 3. If still no match exists, it searches in the built-in namespace (the namespace which contains the built-n objects).  
 4. If still no match exists, a _NameError_ exception is raised.  
 
-One of the first thing which needs to be understood is that variables bound to different namespaces are different variables _even if they have the same name_.  
+_One of the first thing which needs to be understood is that variables bound to different namespaces are different variables even if they have the same name_.  
 
 Here are some examples:
 
