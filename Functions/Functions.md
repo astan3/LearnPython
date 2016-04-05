@@ -179,7 +179,7 @@ num + =1
 _num_ variable started to refer another object than variable _a_. 
 
 ### 4.4 Variables scoping
-Every time a function executes, a _local namespace_ is created.  
+Every time a function executes, a _local namespace_ is created. When the function finishes its execution, the associated local namespace is destroyed.  
 This local namespace represents an environment that contains the function parameters and the variables defined inside the function body.  
 Both function parameters and variables defined inside the function body act, from the scoping point of view, as variables _local_ to the function.  
 They are variables _bound_ to the local namespace associated to the function.  
@@ -269,3 +269,28 @@ NameError: name 'b' is not defined
 In this case, we got a _NameError_ exception, as expected per scoping rule 4. The is no variable named b bound to the either local, global, or built-in namespace.  
 
 ### 4.5 Nested functions and closures
+Python supports nested function definitions (meaning functions defined inside other functions).  
+Here is an example:  
+
+```python
+>>> def make_greeter(name):
+...     def greeter():
+...         print("Hello {}".format(name))
+...     return greeter
+... 
+>>> greet = make_greeter("Adrian")
+>>> greet()
+Hello Adrian
+```
+
+First, let us remember that everything in Python is an object. That means _that functions are objects too_.  
+People with a computer science background may recall the "functions are values" principle from the functional programming paradigm.  
+While Python is not technically a functional programming language, it has some functional programming capabilities.  
+So, if functions are objects it means that a function can receive as parameter another function or it can return a function.  
+Returning to our example, we notice that the *make_greeter()* function returns another function (the _greeter()_ function).  
+The _greeter()_ function is a _nested function_, because it is defined inside the *make_greeter()* function.   
+The *make_greeter()* function is the _enclosing function_ of the _greeter()_ function.  
+
+Another thing we notice is the fact that the _greeter()_ function accesses the _name_ parameter of its enclosing function.  
+Because the _name_ parameter is referenced by the _greeter()_ function, its referenced object is kept alive after the *make_greeter()* function has finished.  
+This makes the _greeter()_ function not only nested function, but also a _closure_. Clojure _captures_ the environment needed by their execution.  
