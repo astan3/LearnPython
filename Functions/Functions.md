@@ -182,7 +182,7 @@ _num_ variable started to refer another object than variable _a_.
 Every time a function executes, a _local namespace_ is created. When the function finishes its execution, the associated local namespace is destroyed.  
 This local namespace represents an environment that contains the function parameters and the variables defined inside the function body.  
 Both function parameters and variables defined inside the function body act, from the scoping point of view, as variables _local_ to the function.  
-They are variables _bound_ to the local namespace associated to the function.  
+Local variables are variables _bound_ to the local namespace associated to the function.  
 
 Variable scoping refers to the _visibility rules_ of a variable.  
 
@@ -210,8 +210,9 @@ Here are some examples:
 When the function _add()_ starts executing, a local namespace associated to the function is created.  
 At this point, we will have two variables named _a_: one bound to the global namespace and one bound to the local namespace of the _add()_ function.  
 By the mechanics of parameters passing, both variables called _a_ will refer to the same integer object, having value _3_.  
-Similary, we will have two variables called _b_ which will refer the same integer object having value _4_.
+Similary, we will have two variables called _b_ which will refer the same integer object having value _4_.  
 
+Let us look at another example:  
 
 ```python
 >>> a = 5
@@ -223,7 +224,7 @@ Similary, we will have two variables called _b_ which will refer the same intege
 5
 ```
 
-Here because when assigning the variable _a_ inside the function, _a new variable was created_.  
+Here, because whe assign the variable _a_ inside the function, _a new local variable was created_.  
 Yes, _incidentally_ has the same name as the variable _a_ bound to the global namespace, but it is actually a _different_ variable bound to the local namespace associated to the _foo()_ function.  
 If we really want to modify the variable named _a_ which is bound to the global namespace, we need to use the _global_ statement.  
 
@@ -254,6 +255,7 @@ This was possible because of the scoping rule 2: the Python interpreter didn't f
 A variable named _a_ was found in the global namespace and therefore was used.  
 
 Let us try another example:
+
 ```python
 >>> a = 5
 >>> def display():
@@ -267,6 +269,24 @@ NameError: name 'b' is not defined
 ```
 
 In this case, we got a _NameError_ exception, as expected per scoping rule 4. The is no variable named b bound to the either local, global, or built-in namespace.  
+
+If we try to use a local variable before it is assigned with a value, an _UnboundLocalError_ exception is raised:  
+
+```python
+>>> i = 0
+>>> i = 0
+>>> def increment():
+...     i += 1
+... 
+>>> increment()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in increment
+UnboundLocalError: local variable 'i' referenced before assignment
+```
+
+Here, inside the _increment()_ function, the variable i is assigned and the _global_ statement is not used. This makes it a local variable.  
+But the statement i += 1 tries to read the value of i which was not yet assigned, hence the error.  
 
 ### 4.5 Nested functions and closures
 Python supports nested function definitions (meaning functions defined inside other functions).  
@@ -292,5 +312,5 @@ The _greeter()_ function is a _nested function_, because it is defined inside th
 The *make_greeter()* function is the _enclosing function_ of the _greeter()_ function.  
 
 Another thing we notice is the fact that the _greeter()_ function accesses the _name_ parameter of its enclosing function.  
-Because the _name_ parameter is referenced by the _greeter()_ function, its referenced object is kept alive after the *make_greeter()* function has finished.  
+Because the _name_ parameter is referenced by the _greeter()_ function, its referred object is kept alive after the *make_greeter()* function has finished.  
 This makes the _greeter()_ function not only nested function, but also a _closure_. Clojure _captures_ the environment needed by their execution.  
