@@ -153,8 +153,8 @@ Here is an example:
 ```
 
 This is happening because there are two variables that points to the same list objects: _items_ and _sequence_.  
-We than modified the referred object inside the sequence_append function via the _sequence_ parameter.
-If a input object is immutable, it cannot be modified inside a function.  
+We than modified the referred object inside the *sequence_append()* function via the _sequence_ parameter.
+If a input object is immutable, it cannot be modified inside a function (or at all).  
 
 ```python
 >>> def increment_number(num):
