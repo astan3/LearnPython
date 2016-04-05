@@ -24,4 +24,115 @@ Inside the function, _a_ will be a _variable_ which refers the integer value  _3
 Similary, _b_ will be a _variable_ referring the integer value _4_.  
 After calling the function, the integer value _7_ is returned, as expected.  
 This can be visualized as follows:  
+
 ![function call](img/add_function_call.png)
+
+The order and number of arguments passed to a function must match those given when defining the function.  
+If this is not the case, a _TypeError_ exception is raised.  
+```python
+>>> add(3)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: add() missing 1 required positional argument: 'b'
+```
+It is not mandatory for a function to have parameters or to formally return something.  
+For example:
+```python
+>>> def greet():
+...     print("Hello")
+... 
+>>> greet()
+Hello
+```
+Here, the function _greet_ does not have any parameters and does not formally return anything.  
+Technically, a function which doesn't formally return something will return _None_.
+
+Function parameters can have _default values_. For example:
+```python
+>>> def compute(a=2, b=3):
+...     return 2 * a + b
+... 
+>>> compute()
+7
+>>> compute(5)
+13
+```
+
+We can explicitly name each function parameter:  
+
+```python
+>>> compute(b=5)
+9
+>>> compute(b=5, a=7)
+19
+>>> compute(a=5, b=7)
+17
+```
+
+We can define variables in the _scope_ of a function (at function level).  
+For example, this is a function which returns the sum of all elements of a sequence:    
+
+```python
+>>> def sum(sequence):
+...     total = 0
+...     for item in sequence:
+...         total += item
+...     return total
+... 
+>>> sum([1, 2, 3])
+6
+```
+In this example, _total_ is a variable defined in the scope of the function _sum_.
+
+### 4.2 Variable number of parameters
+A function can accept a variable number of parameters if the last parameter is prefixed with an asterisk(*).  
+Let us rewrite the _sum_ function so that we use variable number of parameters:  
+
+```python
+>>> def sum(*sequence):
+...     total = 0
+...     for item in sequence:
+...         total += item
+...     return total
+... 
+>>> sum(1, 2, 3)
+6
+```
+The difference between this version and the previous version is that now we don't pass a list or tuple, but we pass directly a variable number of arguments.  
+If we try to pass a list, as before, we get an exception:
+
+```python
+>>> sum([1, 2, 3])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 4, in sum
+TypeError: unsupported operand type(s) for +=: 'int' and 'list'
+
+If we want to achieve this, we need to unpack the list:
+
+```python
+>>> sum(*[1, 2, 3])
+6
+```
+
+If the last argument of a function begins with **, all the additional keyword arguments are placed in a dictionary:  
+
+```python
+>>> def generic_function(*args, **kwargs):
+...     print("Arguments:")
+...     for arg in args:
+...         print(arg, end=' ')
+...     print("\nKeyword arguments:")
+...     for key, val in kwargs.items():
+...         print("{}:{}".format(key, val))
+... 
+>>> generic_function(1, 2, 3, one=1, two=2, three=3)
+Arguments:
+1 2 3 
+Keyword arguments:
+one:1
+two:2
+three:3
+```
+
+### 4.3 More about arguments passing and returning values
