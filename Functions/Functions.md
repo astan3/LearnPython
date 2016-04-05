@@ -13,7 +13,7 @@ As a first example, this is a simple function which adds two numbers and return 
 7
 ```
 Let us identify each component:
-- the _name_ of the function is _add_
+- the _name_ of the function is _add()_
 - the function have two _parameters_, named _a_ and _b_
 - the _body_ of the function contains the _statements_ which gets executed when the function is _called_.  
   In our case, the _body_ of the function is: _return a + b_
@@ -44,7 +44,7 @@ For example:
 >>> greet()
 Hello
 ```
-Here, the function _greet_ does not have any parameters and does not formally return anything.  
+Here, the function _greet()_ does not have any parameters and does not formally return anything.  
 Technically, a function which doesn't formally return something will return _None_.
 
 Function parameters can have _default values_. For example:
@@ -82,11 +82,11 @@ For example, this is a function which returns the sum of all elements of a seque
 >>> sum([1, 2, 3])
 6
 ```
-In this example, _total_ is a variable defined in the scope of the function _sum_.
+In this example, _total_ is a variable defined in the scope of the function _sum()_.
 
 ### 4.2 Variable number of parameters
 A function can accept a variable number of parameters if the last parameter is prefixed with an asterisk(*).  
-Let us rewrite the _sum_ function so that we use variable number of parameters:  
+Let us rewrite the _sum()_ function so that we use variable number of parameters:  
 
 ```python
 >>> def sum(*sequence):
@@ -108,7 +108,7 @@ Traceback (most recent call last):
   File "<stdin>", line 4, in sum
 TypeError: unsupported operand type(s) for +=: 'int' and 'list'
 
-If we want to achieve this, we need to unpack the list:
+If we want to achieve this, we need to _unpack_ the list:
 
 ```python
 >>> sum(*[1, 2, 3])
@@ -135,4 +135,136 @@ two:2
 three:3
 ```
 
-### 4.3 More about arguments passing and returning values
+### 4.3 More about arguments passing
+When a function is called, its arguments are variables which refer to the passed input objects.  
+This implies that if a passed input object is _mutable_, the function can modify (mutate) that object.  
+Here is an example:  
+
+```python
+>>> def sequence_append(sequence, item):
+...     sequence.append(item)
+... 
+>>> items = [1, 2, 3]
+>>> items
+[1, 2, 3]
+>>> sequence_append(items, 4)
+>>> items
+[1, 2, 3, 4]
+```
+
+This is happening because there are two variables that points to the same list objects: _items_ and _sequence_.  
+We than modified the referred object inside the sequence_append function via the _sequence_ parameter.
+If a input object is immutable, it cannot be modified inside a function.  
+
+```python
+>>> def increment_number(num):
+...    num += 1
+...    print("Inside the function, num = {}".format(num))
+... 
+>>> a = 3
+>>> a
+3
+>>> increment_number(a)
+Inside the function, num = 4
+>>> a
+3
+>>> 
+```
+
+As we can see, the function did not modified the input argument (variable _a_ remained unchanged).
+This is because integers are immutable objects and after the following statement:
+```python
+num + =1
+```
+_num_ variable started to refer another object than variable _a_. 
+
+### 4.4 Variables scoping
+Every time a function executes, a _local namespace_ is created.  
+This local namespace represents an environment that contains the function parameters and the variables defined inside the function body.  
+Both function parameters and variables defined inside the function body act, from the scoping point of view, as variables _local_ to the function.  
+They are variables _bound_ to the local namespace associated to the function.  
+After the function finishes to execute, its associated local namespace is destroyed and the variables bound to that local namespace aren't live anymore.  
+
+Variable scoping refers to the _visibility rules_ of a variable.  
+
+In a nutshell, the scoping rules are:  
+1. When the Python interpreter needs to evaluate the value of a variable, it searches it first in the local namespace.  
+2. If no match exists, it searches it in the global namespace. The global namespace of a function is the _module_ in which the function is executed.  
+3. If still no match exists, it searches in the built-in namespace (the namespace which contains the built-n objects).  
+4. If still no match exists, a _NameError_ exception is raised.  
+
+One of the first thing which needs to be understood is that variables bound to different namespaces are different variables _even if they have the same name_.  
+
+Here are some examples:
+
+```python
+>>> a = 3 # bound to the global namespace.
+>>> b = 4 # bound to the global namespace.
+>>> def add(a, b):
+...     # a and b are bound to the local namespace.
+...     return a + b
+... 
+>>> add(a, b)
+7
+```
+
+When the function _add()_ starts executing, a local namespace associated to the function is created.  
+At this point, we will have two variables named _a_: one bound to the global namespace and one bound to the local namespace of the _add()_ function.  
+By the mechanics of parameters passing, both variables called _a_ will refer to the same integer object, having value _3_.  
+Similary, we will have two variables called _b_ which will refer the same integer object having value _4_.
+
+
+```python
+>>> a = 5
+>>> def foo():
+...     a = 6
+... 
+>>> foo()
+>>> a
+5
+```
+
+Here because when assigning the variable _a_ inside the function, _a new variable was created_.  
+Yes, _incidentally_ has the same name as the variable _a_ bound to the global namespace, but it is actually a _different_ variable bound to the local namespace associated to the _foo()_ function.  
+If we really want to modify the variable named _a_ which is bound to the global namespace, we need to use the _global_ statement.  
+
+```python
+>>> a = 5
+>>> def foo():
+...     global a
+...     a = 6
+... 
+>>> foo()
+>>> a
+6
+```
+Here, by using the _global_ statement, we specify that _a_ is a variable already bound to the global namespace.  
+Now, let us try to write a function which displays the value of a variable bound to the global namespace.  
+
+```python
+>>> a = 5
+>>> def display():
+...     print(a)
+... 
+>>> display()
+5
+```
+
+We can see that we managed to display the value of the variable _a_, bound to the global namespace, without the need of the _global_ statement.  
+This was possible because of the scoping rule 2: the Python interpreter didn't found any variable named _a_ bound to the local namespace, so it searched the global namespace.  
+A variable named _a_ was found in the global namespace and therefore was used.  
+
+Let us try another example:
+```python
+>>> a = 5
+>>> def display():
+...     print(b)
+... 
+>>> display()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in display
+NameError: name 'b' is not defined
+```
+
+In this case, we got a _NameError_ exception, as expected per scoping rule 4. The is no variable named b bound to the either local, global, or built-in namespace.  
