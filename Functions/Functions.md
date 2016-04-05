@@ -183,11 +183,10 @@ Every time a function executes, a _local namespace_ is created.
 This local namespace represents an environment that contains the function parameters and the variables defined inside the function body.  
 Both function parameters and variables defined inside the function body act, from the scoping point of view, as variables _local_ to the function.  
 They are variables _bound_ to the local namespace associated to the function.  
-After the function finishes to execute, its associated local namespace is destroyed and the variables bound to that local namespace aren't live anymore.  
 
 Variable scoping refers to the _visibility rules_ of a variable.  
 
-In a nutshell, the scoping rules are:  
+In a nutshell, the (simplified) scoping rules are:  
 1. When the Python interpreter needs to evaluate the value of a variable, it searches it first in the local namespace.  
 2. If no match exists, it searches it in the global namespace. The global namespace of a function is the _module_ in which the function is executed.  
 3. If still no match exists, it searches in the built-in namespace (the namespace which contains the built-n objects).  
@@ -268,3 +267,5 @@ NameError: name 'b' is not defined
 ```
 
 In this case, we got a _NameError_ exception, as expected per scoping rule 4. The is no variable named b bound to the either local, global, or built-in namespace.  
+
+### 4.5 Nested functions and closures
