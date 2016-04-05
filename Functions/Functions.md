@@ -313,4 +313,4 @@ The *make_greeter()* function is the _enclosing function_ of the _greeter()_ fun
 
 Another thing we notice is the fact that the _greeter()_ function accesses the _name_ parameter of its enclosing function.  
 Because the _name_ parameter is referenced by the _greeter()_ function, its referred object is kept alive after the *make_greeter()* function has finished.  
-This makes the _greeter()_ function not only nested function, but also a _closure_. Clojure _captures_ the environment needed by their execution.  
+This makes the _greeter()_ function not only nested function, but also a _closure_. Closures _captures_ the environment needed by their execution.  
