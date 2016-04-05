@@ -242,10 +242,10 @@ Here, by using the _global_ statement, we specify that _a_ is a variable already
 Now, let us try to write a function which displays the value of a variable bound to the global namespace.  
 
 ```python
->>> a = 5
 >>> def display():
 ...     print(a)
 ... 
+>>> a = 5
 >>> display()
 5
 ```
