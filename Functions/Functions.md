@@ -257,15 +257,14 @@ A variable named _a_ was found in the global namespace and therefore was used.
 Let us try another example:
 
 ```python
->>> a = 5
 >>> def display():
-...     print(b)
+...     print(x)
 ... 
 >>> display()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<stdin>", line 2, in display
-NameError: name 'b' is not defined
+NameError: name 'x' is not defined
 ```
 
 In this case, we got a _NameError_ exception, as expected per scoping rule 4. The is no variable named b bound to the either local, global, or built-in namespace.  
@@ -273,7 +272,6 @@ In this case, we got a _NameError_ exception, as expected per scoping rule 4. Th
 If we try to use a local variable before it is assigned with a value, an _UnboundLocalError_ exception is raised:  
 
 ```python
->>> i = 0
 >>> i = 0
 >>> def increment():
 ...     i += 1
