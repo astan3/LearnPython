@@ -1,5 +1,7 @@
 ## 4. Functions  
 ### 4.1 Introduction
+Until now we only _used_ existing functions (either built-in functions or functions from the standard library).  
+In this chapter we will learn how we can create our own functions.  
 Non-trivial programs can use functions for reasons such as modularity, code reuse and maintainability.  
 These desiderates are extremely important in software development.  
 In python, functions are defined using the _def_ keyword.  
