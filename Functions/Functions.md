@@ -288,29 +288,49 @@ UnboundLocalError: local variable 'i' referenced before assignment
 Here, inside the _increment()_ function, the variable i is assigned and the _global_ statement is not used. This makes it a local variable.  
 But the statement i += 1 tries to read the value of i which was not yet assigned, hence the error.  
 
-### 4.5 Nested functions and closures
-Python supports nested function definitions (meaning functions defined inside other functions).  
-Here is an example:  
+4.5 ### Documentation strings (docstrings)
+It is very common for a function to begin with a documentation string describing its usage.  
+It is not mandatory to always have a docstring, but it is considered good practice to have one for functions with an immediate obvious purpose.  
+For example:  
 
 ```python
->>> def make_greeter(name):
-...     def greeter():
-...         print("Hello {}".format(name))
-...     return greeter
+>>> def max(a, b):
+...     """Return the maximum of two numbers"""
+...     if a >= b:
+...         return a
+...     return b
 ... 
->>> greet = make_greeter("Adrian")
->>> greet()
-Hello Adrian
 ```
 
-First, let us remember that everything in Python is an object. That means _that functions are objects too_.  
+4.6 ### Functions are objects
+Let us remember that everything in Python is an object. That means that _functions are objects too_.  
 People with a computer science background may recall the "functions are values" principle from the functional programming paradigm.  
 While Python is not technically a functional programming language, it has some functional programming capabilities.  
-So, if functions are objects it means that a function can receive as parameter another function or it can return a function.  
-Returning to our example, we notice that the *make_greeter()* function returns another function (the _greeter()_ function).  
-The _greeter()_ function is a _nested function_, because it is defined inside the *make_greeter()* function.   
-The *make_greeter()* function is the _enclosing function_ of the _greeter()_ function.  
+Because functions are objects, we can, for example, assign a function to a variable:
 
-Another thing we notice is the fact that the _greeter()_ function accesses the _name_ parameter of its enclosing function.  
-Because the _name_ parameter is referenced by the _greeter()_ function, its referred object is kept alive after the *make_greeter()* function has finished.  
-This makes the _greeter()_ function not only nested function, but also a _closure_. Closures _captures_ the environment needed by their execution.  
+```python
+>>> max_func = max
+>>> max_func(9, 3)
+9
+```
+
+Functions being objects, we can access some of their attributes.  
+For example, we can programatically access the function name and docstring attributes:    
+
+```python
+>>> max.__name__
+'max'
+>>> max.__doc__
+'Return the maximum of two numbers'
+```
+
+4.7. ### Rules for functions design, in the real world
+- Functions should be short. Long functions increase the code complexity and become harder to follow.
+- Functions should do one thing and do it well. If you have multiple tasks to do, you should create more functions.
+- Try to minimize the usage of global variables as much as possible. Prefer using function parameters instead.
+- Pay attention to the number of parameters. If a function receives more than five parameters, it makes it harder to use without looking at the documentation.
+  In that case re-analyse your function design. 
+- Functions with a non-obvious immediate purpose should have docstrings attached.
+- Functions should have good names: not overly verbose but also not cryptic. The name of the function should directly suggest their purpose.
+  Similary, the function parameters and local variables should have appropriate names, suggesting their purpose.
+- Use comments inside the functions, if you feel that it really adds value (clarify things). But don't try to document self-obvious code.
