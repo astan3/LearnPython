@@ -7,7 +7,7 @@ An introduction to Python for beginners.
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 [Functions](Functions/Functions.md)  
 [Nested functions, closures and lambdas] (Closures_Lambdas/Closures_Lambdas.md)  
-Recursive functions
+Recursive functions  
 Basic objects  
 Exceptions  
 Files and directories handling  
