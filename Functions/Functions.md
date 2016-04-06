@@ -15,7 +15,7 @@ As a first example, this is a simple function which adds two numbers and return 
 7
 ```
 Let us identify each component:
-- the _name_ of the function is _add()_
+- the _name_ of the function is _add_
 - the function have two _parameters_, named _a_ and _b_
 - the _body_ of the function contains the _statements_ which gets executed when the function is _called_.  
   In our case, the _body_ of the function is: _return a + b_
@@ -288,7 +288,7 @@ UnboundLocalError: local variable 'i' referenced before assignment
 Here, inside the _increment()_ function, the variable i is assigned and the _global_ statement is not used. This makes it a local variable.  
 But the statement i += 1 tries to read the value of i which was not yet assigned, hence the error.  
 
-4.5 ### Documentation strings (docstrings)
+### 4.5 Documentation strings (docstrings)
 It is very common for a function to begin with a documentation string describing its usage.  
 It is not mandatory to always have a docstring, but it is considered good practice to have one for functions with an immediate obvious purpose.  
 For example:  
@@ -304,7 +304,7 @@ For example:
 
 ### 4.6 Functions are objects
 Let us remember that everything in Python is an object. That means that _functions are objects too_.  
-People with a computer science background may recall the "functions are values" principle from the functional programming paradigm.  
+People with a computer science background may recall the _"functions are values"_ principle from the functional programming paradigm.  
 While Python is not technically a functional programming language, it has some functional programming capabilities.  
 Because functions are objects, we can, for example, assign a function to a variable:
 
