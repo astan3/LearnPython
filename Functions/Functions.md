@@ -302,7 +302,7 @@ For example:
 ... 
 ```
 
-4.6 ### Functions are objects
+### 4.6 Functions are objects
 Let us remember that everything in Python is an object. That means that _functions are objects too_.  
 People with a computer science background may recall the "functions are values" principle from the functional programming paradigm.  
 While Python is not technically a functional programming language, it has some functional programming capabilities.  
@@ -324,7 +324,7 @@ For example, we can programatically access the function name and docstring attri
 'Return the maximum of two numbers'
 ```
 
-4.7. ### Rules for functions design, in the real world
+### 4.7 Rules for functions design, in the real world
 - Functions should be short. Long functions increase the code complexity and become harder to follow.
 - Functions should do one thing and do it well. If you have multiple tasks to do, you should create more functions.
 - Try to minimize the usage of global variables as much as possible. Prefer using function parameters instead.
