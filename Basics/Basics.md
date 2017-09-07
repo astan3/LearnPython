@@ -1,13 +1,26 @@
 ## 2. Basics
 ### 2.1 Lines
 The statement separator in python is the _semi-colon_(__;__).However, it must be used only when writing more than one statement per line.  
-The line continuation character is the back-slash (__\__).  
+The line continuation character is the back-slash.  
 Everything after "#" on a line is treated as comments (is ignored by the interpreter).
+
+```python
+print("Hello "); print("World")
+print("A very very \
+long line")     # An useless comment.
+```
 
 ### 2.2 Blocks
 Python represents block structure using indentation. Other languages uses brackets or _begin/end_ keywords.
 This is belived by many to increase the code redability.  
-_The indentation level is recommended to be set to 4 spaces and no hard tabs should be used._
+_The indentation level is recommended to be set to 4 spaces and no hard tabs should be used._  
+To see Python's opinion about this, execute:
+
+```python
+>>> from __future__ import braces
+  File "<stdin>", line 1
+SyntaxError: not a chance
+```
 
 ### 2.3 Basic built-in types
 Python has many built-in types (all of them are presented in the official documentation: https://docs.python.org/3/library/stdtypes.html)  
