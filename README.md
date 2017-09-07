@@ -7,8 +7,8 @@ An introduction to Python for beginners.
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 [Functions](Functions/Functions.md)  
 Closures and lambdas. Recursive functions  
-Basic file I/O.
-Basic classes  
+Basic file I/O  
+Creating yoeur own classes  
 Exceptions  
 Iterators and generators. Context managers    
 Unit-testing and debugging  
@@ -37,4 +37,4 @@ More about Django
 An introduction to data analysis and visualization using pandas, matplotlib and scipy  
 Basic machine learning concepts  
 Machine learning examples using scikit-learn  
-Interacting with C. Embedding and extending the Python interpreter.  
+Interacting with C. Embedding and extending the Python interpreter  

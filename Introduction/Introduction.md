@@ -8,7 +8,8 @@ The official site is http://www.python.org. Here we can find the official docume
 
 ### 1.2 About this course and prerequisites
 This is an introduction to the Pyhon language for beginners.
-Some familiarity with programming will help, but is not mandatory.  
+Some familiarity with programming will help, but is generaly not mandatory. 
+An exception to this is the chapter about embedding and extending the Python interpreter, which assumes a good familiarity with the C programming language.  
 
 ### 1.3 Setting-up
 #### 1.3.1 Install Python
