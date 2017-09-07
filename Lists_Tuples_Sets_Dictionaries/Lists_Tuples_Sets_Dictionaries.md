@@ -646,7 +646,7 @@ The content of a dictionary can be cleared by using the _clear()_ method:
   However, note that searching and inserting in an _OrderedDict_ is slower than in a regular _dictionary_.
 
 ### 4.7 Exercies
-__4.7.1__ Type yourself all the examples in this chapter in the interactive shell and make sure you understand how they work.
+__4.7.1__ Type yourself all the examples in this chapter in the interactive shell and make sure you understand how they work.  
 __4.7.2__ Explain conceptually how could you implement an _OrderedDict_.  
 __4.7.3__ Write a script that prints the unique elements in a list while maintaining order.  
 For example, if the list is _[1, 4, 3, 1, 2, 3, 5, 4]_, the program will display:  
