@@ -6,7 +6,7 @@ An introduction to Python for beginners.
 [Control flow](Control_flow/Control_Flow.md)  
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 [Functions](Functions/Functions.md)  
-[Nested functions, closures and lambdas] (Closures_Lambdas/Closures_Lambdas.md)  
+Nested functions, closures and lambdas  
 Recursive functions  
 Basic objects  
 Exceptions  
