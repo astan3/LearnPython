@@ -39,7 +39,7 @@ pi = 3.14             # A float.
 c = complex(2.5, 3.5) # A complex number (2.5 + j * 3.5).
 ```
 
-Here, we have also introduced variables: _weight, _pi_ and _c_. We will discuss about variables shortly, for the moment just follow your intuition.   
+Here, we have also introduced variables: _weight_, _pi_ and _c_. We will discuss about variables shortly, for the moment just follow your intuition.   
 
 #### 2.3.2 Booleans
 A boolean object can be either _True_ or _False_.
@@ -257,10 +257,10 @@ _NoneType_ is a type that has only one value, _None_. _None_ is frequently used 
 This is conceptually similar to a _null_ reference in _Java_.
 
 ### 2.4 Variables
-A variable is a name (a tag) associated (bound) to an _object_. We say that the variable _refer_ the object.  
+A variable is a name (a _tag_) associated _(bound_) to an _object_. We say that the variable _refers_ the object.  
 If you don't know what an object is, that's ok, it will be covered later in detail. For now, think at it like a box containing a value and occupying some space in memory.  
 The object has a specific type. The variable does _not_ have a type.  
-During the execution of a program, the same variable can be reassigned to objects of various types.  
+During the execution of a program, _the same variable can be reassigned to objects of various types_.  
 Each object has an _unique identifier_ (this unique identifier is actually the object address in memory).  
 A variable which refer an object contains the object's unique identifier.  
 We can find out the unique identifier of a referred object using the _id()_ function.  
