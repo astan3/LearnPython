@@ -180,11 +180,31 @@ num + =1
 ```
 _num_ variable started to refer another object than variable _a_. 
 
-### 4.4 Variables scoping
+### 4.4 Namespaces and variables scoping
 Every time a function executes, a _local namespace_ is created. When the function finishes its execution, the associated local namespace is destroyed.  
 This local namespace represents an environment that contains the function parameters and the variables defined inside the function body.  
 Both function parameters and variables defined inside the function body act, from the scoping point of view, as variables _local_ to the function.  
 Local variables are variables _bound_ to the local namespace associated to the function.  
+Besides the _local namespace_, we also have the _global namespace_ and the _builtin namespace_.  
+Namespaces are implemented using _dictionaries_.  
+
+To access the _local namespace_, one can use the _locals()_ function:
+
+```python
+>>> def foo():
+...     x, y, z = 1, 2, 3
+...     print(locals())
+...
+>>> foo()
+{'z': 3, 'y': 2, 'x': 1}
+```
+
+To access the global namespace, one can use the _globals()_ function.  
+The _builtin namespace_ can be accessed as follows:
+
+```python
+>>> print(dir(__builtins__))
+```
 
 Variable scoping refers to the _visibility rules_ of a variable.  
 

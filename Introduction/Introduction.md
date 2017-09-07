@@ -13,10 +13,10 @@ An exception to this is the chapter about embedding and extending the Python int
 
 ### 1.3 Setting-up
 #### 1.3.1 Install Python
-This course uses _Python 3.6_
+This course uses _Python 3.6_. 
 In order to follow it you will need to install _Python 3.6.x_ (or greater).
-Python is available on the official site (http://www.python.org), but I recommend to use the [_miniconda_ distribution](http://conda.pydata.org/miniconda.html).
-Now, verify that everything installed fine.  
+Python is available on the official site (http://www.python.org), but I recommend to use the [_miniconda_ distribution](http://conda.pydata.org/miniconda.html).  
+After installing it, verify that everything works fine. 
 Open a _terminal_ (also known as _Command Prompt_ on Windows systems) and execute:
 
     python
@@ -34,17 +34,21 @@ For example, you can enter some arithmetic expressions and use Python as a calcu
 
     >>> 2 * 8 + 4
     20
+    >>> 2**16 + 1
+    65537
 
-To see a set of principles which guides Python, execute:
+So, the Python interactive shell makes a good calculator.  
+
+Take a while to see a set of core principles which guides Python. Execute:
 
     >>> import this
 
-Call the quit function to exist the interactive shell:
+After finished playing with the Python interactive shell, call the quit function to exit:
 
     >>> quit()
 
 #### 1.3.2 Install IPython
-_IPython_ it is an improved interactive shell.
+_IPython_ it is an _improved_ interactive shell.
 In order to install it, we will use the _pip_ package management utility (_pip_ is the official package manager for Python).  
 From a _terminal_, execute:
 

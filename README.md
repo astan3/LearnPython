@@ -31,10 +31,11 @@ Database access - The Python database API
 Database access - The SQLAlchemy Object Relational Mapper  
 NoSQL. Introduction to Redis  
 Microservices concepts  
-Microservices using the Falcon framework  
+Microservices using the Falcon framework and RabbitMQ  
 Web frameworks: an introduction to Django  
 More about Django  
 An introduction to data analysis and visualization using pandas, matplotlib and scipy  
 Basic machine learning concepts  
 Machine learning examples using scikit-learn  
 Interacting with C. Embedding and extending the Python interpreter  
+Appendix A: Introduction to the asymptotic notation  
