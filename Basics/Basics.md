@@ -11,16 +11,18 @@ long line")     # An useless comment.
 ```
 
 ### 2.2 Blocks
-Python represents block structure using indentation. Other languages uses brackets or _begin/end_ keywords.
-This is belived by many to increase the code redability.  
+Python represents block structure using indentation. This is belived by many to increase the code redability.
+Other languages uses braces or _begin/end_ keywords.
 _The indentation level is recommended to be set to 4 spaces and no hard tabs should be used._  
-To see Python's opinion about this, execute:
+To see Python's opinion about using braces, execute:
 
 ```python
 >>> from __future__ import braces
   File "<stdin>", line 1
 SyntaxError: not a chance
 ```
+
+Here, we see that a _SyntaxError exception_ was thrown. In general, exceptions are used to indicate that errors occured.  
 
 ### 2.3 Basic built-in types
 Python has many built-in types (all of them are presented in the official documentation: https://docs.python.org/3/library/stdtypes.html)  
@@ -36,12 +38,15 @@ weight = 80           # An integer.
 pi = 3.14             # A float.
 c = complex(2.5, 3.5) # A complex number (2.5 + j * 3.5).
 ```
+
+Here, we have also introduced variables: _weight, _pi_ and _c_. We will discuss about variables shortly, for the moment just follow your intuition.   
+
 #### 2.3.2 Booleans
 A boolean object can be either _True_ or _False_.
 
 #### 2.3.3 Strings
-Strings are used to handle _texts_. Strings are sequences of _Unicode code points_.
-Strings are also _immutable_.  
+Strings are used to handle _texts_. Strings are sequences of _Unicode code points_ (think of it as a way to represent characters in many languages).
+Strings are also _immutable_.
 There are several ways to specify strings:
 
 ```python
@@ -61,8 +66,8 @@ The length of the string can be obtain using the _len_ function:
 ```
 
 Each string can be indexed. The first code point is at _index 0_.
-The last one is at index length of string minus one.
-The index can also be a negative integer (unlike in many other languages).
+The last one is at index length of string _minus one_.
+The index can also be a _negative integer_ (unlike in many other languages).
 In that case, the index is counted starting from the end of the string (-1 is the last code point in the string).  
 Indexing a string will result in a string with length 1.
 
@@ -183,7 +188,7 @@ Consult the official documentation for more string methods.
 
 #### 2.3.4 Bytes
 
-Bytes (byte strings) objects are _immutable_ sequences of single byte values.
+Bytes (byte strings) objects are _immutable_ sequences of _single byte values_.
 The elements can be specified as _ASCII_ characters or as _hexadecimal digits_.
 They presents many similarities with strings. Many constructions which applies to strings also applies to byte strings.
 
@@ -253,6 +258,7 @@ This is conceptually similar to a _null_ reference in _Java_.
 
 ### 2.4 Variables
 A variable is a name (a tag) associated (bound) to an _object_. We say that the variable _refer_ the object.  
+If you don't know what an object is, that's ok, it will be covered later in detail. For now, think at it like a box containing a value and occupying some space in memory.  
 The object has a specific type. The variable does _not_ have a type.  
 During the execution of a program, the same variable can be reassigned to objects of various types.  
 Each object has an _unique identifier_ (this unique identifier is actually the object address in memory).  
