@@ -58,6 +58,9 @@ Note: on Windows systems you will also need to install the _pyreadline_ package 
 
     pip install pyreadline ipython
 
+Note: you have tons of third-party packages that you can install using _pip_. 
+Take a look at the _Python Package Index_ (a.k.a _PyPI_): https://pypi.python.org/pypi 
+
 #### 1.3.3 Install code checking tools
 During this course we will use the _pylint_ static code checking tool. Install it as usually:
 
