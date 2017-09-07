@@ -8,7 +8,7 @@ An introduction to Python for beginners.
 [Functions](Functions/Functions.md)  
 Closures and lambdas. Recursive functions  
 Basic file I/O  
-Creating yoeur own classes  
+Creating your own classes  
 Exceptions  
 Iterators and generators. Context managers    
 Unit-testing and debugging  
