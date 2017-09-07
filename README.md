@@ -6,32 +6,35 @@ An introduction to Python for beginners.
 [Control flow](Control_flow/Control_Flow.md)  
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 [Functions](Functions/Functions.md)  
-Nested functions, closures and lambdas  
-Recursive functions  
-Basic objects  
+Closures and lambdas. Recursive functions  
+Basic file I/O.
+Basic classes  
 Exceptions  
-Files and directories handling  
-Modules and packages  
+Iterators and generators. Context managers    
 Unit-testing and debugging  
-Coding style  
+More on files and directories handling  
+Modules and packages  
+Coding style. PEP8    
 Regular expressions  
-Example: creating a grep-like tool  
-Iterators and generators  
 Decorators  
-More about objects. Magic methods  
-Object oriented programming principles  
+More about classes. Magic methods  
+Object oriented programming principles (SOLID)  
 Object oriented design. An introduction to design patterns  
+More design patterns  
 Metaclasses  
 Processes and Threads  
 Client-server programming  
-The asyncio framework  
-Example: creating a simple chat application  
-SQL refresher  
+The asyncio framework. Coroutines  
+XML and JSON processing  
+Small SQL introducton  
 Database access - The Python database API  
 Database access - The SQLAlchemy Object Relational Mapper  
-Graphical user interfaces using PyQt  
-XML and JSON processing  
+NoSQL. Introduction to Redis  
+Microservices concepts  
+Microservices using the Falcon framework  
 Web frameworks: an introduction to Django  
-Example: creating a basic blog web application  
-Data analysis and visualization  
-Other useful modules   
+More about Django  
+An introduction to data analysis and visualization using pandas, matplotlib and scipy  
+Basic machine learning concepts  
+Machine learning examples using scikit-learn  
+Interacting with C. Embedding and extending the Python interpreter.  
