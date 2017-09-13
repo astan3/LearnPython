@@ -5,8 +5,7 @@ An introduction to Python for beginners.
 [Basics](Basics/Basics.md)  
 [Control flow](Control_flow/Control_Flow.md)  
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
-[Functions](Functions/Functions.md)  
-Closures and lambdas. Recursive functions  
+[Functions, closures and lambdas](Functions/Functions.md)   
 Basic file I/O  
 Creating your own classes  
 Exceptions  

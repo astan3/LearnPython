@@ -537,7 +537,61 @@ In inner function, msg is Inner
 In outer function again, msg is Inner
 ```
 
-### 4.9 Rules for functions design, in the real world
+### 4.9 Lambdas. The map, filter and reduce functions.
+Lamdas are small, anonymous functions, which are not bound to a name. They are _throw-away_ functions, needed only were have been created.  
+For example, here is a function which receives two arguments and returns their sum.
+
+```python
+>>> add = lambda x, y: x + y
+>>> add(2, 3)
+5
+```
+
+Here, we have a _lambda_ which receives two arguments (named _x_ and _y_) and returns their sum. 
+A _lambda_, is, of course, an object. Here we have a variable named _add_ which refers our lambda object. Than, we call the lambda with parameters 2 and 3.  
+Why should we use a lambda ? Because sometimes it makes the code more succint. 
+To see this, let's move on to the _map_ function.  
+Let us assume that given the list of integers from 1 to 10, we want to create another list containing those integers squared. 
+There are, of course, multiple ways to do this.  
+The direct way:
+
+```python
+>>> values = []
+>>> for i in range(1, 11):
+...     values.append(i**2)
+...
+>>> values
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+But, as we have seen in the previous chapter, a more idiomatic way is to use a _list comprehension_:
+
+```python
+>>> values = [i ** 2 for i in range(1, 11)]
+>>> values
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+``` 
+
+We can also use the _map_ function. The map function receives two arguments: a function which receives an argument and a sequence (e.g a list). 
+It applies the function on each element of the sequence and returns a collection which each result.  
+
+```python
+>>> def square(x):
+...     return x**2
+>>> values = list(map(square, range(1, 11)))
+>>> values
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+But, isn't it unconvenient that we need to create a _square_ function just for it ? Let's use a lambda.
+
+```python
+>>> values = list(map(lambda x: x**2, range(1, 11)))
+>>> values
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+### 4.10 Rules for functions design, in the real world
 - Functions should be short. Long functions increase the code complexity and become harder to follow.
 - Functions should do one thing and do it well. If you have multiple tasks to do, you should create more functions.
 - Try to minimize the usage of global variables as much as possible. Prefer using function parameters instead.
