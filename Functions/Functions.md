@@ -591,6 +591,26 @@ But, isn't it unconvenient that we need to create a _square_ function just for i
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
 
+Functions, closures and lambdas, being objects, we can store them in containers. 
+Here is an example of using a _dictionary were the keys are lambdas_ implementing elementary arithemetic operations:
+
+```python
+>>> operations = {
+...     '+': lambda x, y: x + y,
+...     '-': lambda x, y: x - y,
+...     '*': lambda x, y: x * y,
+...     '/': lambda x, y: x/y
+... }
+>>> operations['+'](2, 3)
+5
+>>> operations['-'](2, 3)
+-1
+>>> operations['*'](2, 3)
+6
+>>> operations['/'](2, 3)
+0.6666666666666666
+```
+
 ### 4.10 Rules for functions design, in the real world
 - Functions should be short. Long functions increase the code complexity and become harder to follow.
 - Functions should do one thing and do it well. If you have multiple tasks to do, you should create more functions.
@@ -601,3 +621,4 @@ But, isn't it unconvenient that we need to create a _square_ function just for i
 - Functions should have good names: not overly verbose but also not cryptic. The name of the function should directly suggest their purpose.
   Similary, the function parameters and local variables should have appropriate names, suggesting their purpose.
 - Use comments inside the functions, if you feel that it really adds value (clarify things). But don't try to document self-obvious code.
+- Use lamdas for small unnamed functions, but _only if this makes the code more succint without sacrifying the redability_.
