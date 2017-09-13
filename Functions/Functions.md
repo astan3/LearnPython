@@ -573,7 +573,7 @@ But, as we have seen in the previous chapter, a more idiomatic way is to use a _
 ``` 
 
 We can also use the _map_ function. The map function receives two arguments: a function which receives an argument and a sequence (e.g a list). 
-It applies the function on each element of the sequence and returns a collection which each result.  
+It applies the function on each element of the sequence and returns an iterable object containing each result.  
 
 ```python
 >>> def square(x):
@@ -592,7 +592,7 @@ But, isn't it unconvenient that we need to create a _square_ function just for i
 ```
 
 Functions, closures and lambdas, being objects, we can store them in containers. 
-Here is an example of using a _dictionary were the keys are lambdas_ implementing elementary arithemetic operations:
+Here is an example of using a _dictionary were the keys are lambdas_ implementing elementary arithmetic operations:
 
 ```python
 >>> operations = {
@@ -609,6 +609,17 @@ Here is an example of using a _dictionary were the keys are lambdas_ implementin
 6
 >>> operations['/'](2, 3)
 0.6666666666666666
+```
+
+Ok, let's move one to the _filter_ function. The _filter_ function receives as parameters a function and a sequence. 
+It applies the function on each element of the sequence and, if the function returns _True_, it stores that element in an iterable object. 
+At the end it returns that object.  
+For example, given a list, we want to obtain another list containing the even elements present in the original list:
+
+```python
+>>> values = [1, 2, 3, 5, 4, 6, 10, 11]
+>>> list(filter(lambda x: x % 2 == 0, values))
+[2, 4, 6, 10]
 ```
 
 ### 4.10 Rules for functions design, in the real world
