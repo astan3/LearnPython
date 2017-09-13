@@ -622,6 +622,48 @@ For example, given a list, we want to obtain another list containing the even el
 [2, 4, 6, 10]
 ```
 
+Finally, we have the _reduce_ function (defined in the _functools_ module). 
+The _reduce_ function receives as parameters a function and a sequence. 
+It applies the function continuosly on the next two elements of the sequence. When it finishes, it returns the last value.  
+The best way to express what it does is matematically.  
+Let us say we have a list with three elements:  
+
+```python
+list = [e1, e2, e3]
+```
+
+Calling:
+```python
+reduce(func, list)
+```
+
+will return an iterable object containing:
+
+```python
+[func(func(e1, e2), e3]
+```
+
+So, first we apply the function _func_ to the first two elements in the list (_e1_ and _e2_). 
+We substitute them with the value return by the function call (that is func(e1, e2)). 
+Than, we apply the function _func_ again, this time the first parameter is the result of the previus appliance and the second one is the next element from our list (_e3_).  
+
+Here is a convoluted way of calculating the sum of the integers from 1 to 100:
+
+```python
+>>> from functools import reduce
+>>> reduce(lambda x, y: x + y, range(1, 101))
+5050
+```
+
+Here is an even more convoluted way of computing the maximum from a list of integers:
+
+```python
+>>> from functools import reduce
+>>> list = [4, 3, 5, 1100, 2222, 77, 4890, 33, 3333]
+>>> reduce(lambda x, y: x if x > y else y, list)
+4890
+```
+
 ### 4.10 Rules for functions design, in the real world
 - Functions should be short. Long functions increase the code complexity and become harder to follow.
 - Functions should do one thing and do it well. If you have multiple tasks to do, you should create more functions.
