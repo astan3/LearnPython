@@ -324,7 +324,7 @@ It is allowed that the default values to be both mutable and immutable objects.
 But, as a best-practice advice, you _should really prefer immutable objects_.  
 Here is an example to see why:
 
-``python
+```python
 >>> def add_one(list=[]):
 ...     print('Before add: ', list)
 ...     list.append(1)
