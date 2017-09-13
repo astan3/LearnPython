@@ -637,10 +637,10 @@ Calling:
 reduce(func, list)
 ```
 
-will return an iterable object containing:
+will return the value:
 
 ```python
-[func(func(e1, e2), e3]
+func(func(e1, e2), e3)
 ```
 
 So, first we apply the function _func_ to the first two elements in the list (_e1_ and _e2_). 
