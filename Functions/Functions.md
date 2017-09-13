@@ -1,4 +1,4 @@
-## 4. Functions  
+## 4. Functions, closures and lambdas  
 ### 4.1 Introduction
 Until now we only _used_ existing functions (either built-in functions or functions from the standard library).  
 In this chapter we will learn how we can create our own functions.  
@@ -446,7 +446,98 @@ For example, we can programatically access the function name and docstring attri
 'Return the maximum of two numbers'
 ```
 
-### 4.8 Rules for functions design, in the real world
+### 4.8 Nested functions and closures
+Python supports nested function definitions (meaning functions defined inside other functions).  
+Here is an example:  
+
+```python
+>>> def make_greeter(name):
+...     def greeter():
+...         print("Hello {}".format(name))
+...     return greeter
+... 
+>>> greet_john = make_greeter("John")
+>>> greet_john()
+Hello John
+>>>
+>>> greet_mike = make_greeter("Mike")
+>>> greet_mike()
+Hello Mike
+```
+
+In section 4.6 we have seen that functions are objects.  
+So, if functions are objects, it means that a function can receive as parameter another function or it can return a function.  
+Returning to our example, we notice that the *make_greeter()* function _returns another function_ (the _greeter()_ function).  
+The _greeter()_ function is a _nested function_, because it is defined inside the *make_greeter()* function.   
+The *make_greeter()* function is the _enclosing function_ of the _greeter()_ function.  
+
+Another thing we notice is the fact that the _greeter()_ function accesses the _name_ parameter of its enclosing function.  
+Because the _name_ parameter is referenced by the _greeter()_ function, its referred object is kept alive after the *make_greeter()* function has finished.  
+This makes the _greeter()_ function not only nested function, but also a _closure_. Closures _captures_ the environment needed by their execution.  
+
+Let us try another example:
+
+```python
+>>> def outer_function():
+...     msg = 'Outer'
+...     def inner_function():
+...         msg = 'Inner'
+...         print('In inner function, msg is', msg)
+...     print('In outer function, msg is', msg)
+...     inner_function()
+...     print('In outer function again, msg is', msg)
+...
+>>> outer_function()
+In outer function, msg is Outer
+In inner function, msg is Inner
+In outer function again, msg is Outer
+```
+
+Here, we have a function, called *outer_function*, which has a local variable called _msg_.  
+In this function we have a nested function, which also have a local variable called _msg_.  
+So, we have two **different** variables with the same name (_msg_), in two scopes: an outer scope (bound to the *outer_function*) and an inner scope (bound to the *inner_function*).  
+But what if we want to change the value of the msg variable bound to the outer scope, from the _inner_function_ ? Can we use the _global_ keyword ?  
+Let's try:
+
+```python
+>>> def outer_function():
+...     msg = 'Outer'
+...     def inner_function():
+...         global msg
+...         msg = 'Inner'
+...         print('In inner function, msg is', msg)
+...     print('In outer function, msg is', msg)
+...     inner_function()
+...     print('In outer function again, msg is', msg)
+...
+>>> outer_function()
+In outer function, msg is Outer
+In inner function, msg is Inner
+In outer function again, msg is Outer
+```
+
+So, it didn't worked. We failed to modify the value of the _msg_ variable bound to the outer scope.  
+
+What is the solution ? Python 3 introduced the _nonlocal_ keyword that allows to assign a variable in an outer, but non-global, scope.  
+
+```python
+>>> def outer_function():
+...     msg = 'Outer'
+...     def inner_function():
+...         nonlocal msg
+...         msg = 'Inner'
+...         print('In inner function, msg is', msg)
+...     print('In outer function, msg is', msg)
+...     inner_function()
+...     print('In outer function again, msg is', msg)
+...
+>>> outer_function()
+In outer function, msg is Outer
+In inner function, msg is Inner
+In outer function again, msg is Inner
+```
+
+### 4.9 Rules for functions design, in the real world
 - Functions should be short. Long functions increase the code complexity and become harder to follow.
 - Functions should do one thing and do it well. If you have multiple tasks to do, you should create more functions.
 - Try to minimize the usage of global variables as much as possible. Prefer using function parameters instead.
