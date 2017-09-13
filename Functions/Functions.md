@@ -5,7 +5,7 @@ In this chapter we will learn how we can create our own functions.
 Non-trivial programs can use functions for reasons such as modularity, code reuse and maintainability.  
 These desiderates are extremely important in software development.  
 In python, functions are defined using the _def_ keyword.  
-Functions have a _name_ and a _body_. They can have _parameters_ and can _return_ values.    
+Functions have a _name_ and a _body_. They can have _parameters_ (also called _arguments_) and can _return_ values.    
 As a first example, this is a simple function which adds two numbers and return their sum.  
 ```python
 >>> def add(a, b):
@@ -84,7 +84,16 @@ For example, this is a function which returns the sum of all elements of a seque
 >>> sum([1, 2, 3])
 6
 ```
-In this example, _total_ is a variable defined in the scope of the function _sum()_.
+In this example, _total_ is a variable defined _in the scope_ of the function _sum()_.
+
+In the example above, the statement:
+```python
+total += item
+```
+is equivalent to:
+```python
+total = total + item
+```
 
 ### 4.2 Variable number of parameters
 A function can accept a variable number of parameters if the last parameter is prefixed with an asterisk(*).  
@@ -178,16 +187,15 @@ This is because integers are immutable objects and after the following statement
 ```python
 num + =1
 ```
-_num_ variable started to refer another object than variable _a_. 
+_num_ variable started to refer another (local) object than variable _a_. 
 
 ### 4.4 Namespaces and variables scoping
-Every time a function executes, a _local namespace_ is created. When the function finishes its execution, the associated local namespace is destroyed.  
+Every time a function executes, a _local namespace_ is created. This is sometimes also referred as a _frame_. 
+When the function finishes its execution, the associated local namespace is destroyed.  
 This local namespace represents an environment that contains the function parameters and the variables defined inside the function body.  
 Both function parameters and variables defined inside the function body act, from the scoping point of view, as variables _local_ to the function.  
 Local variables are variables _bound_ to the local namespace associated to the function.  
 Besides the _local namespace_, we also have the _global namespace_ and the _builtin namespace_.  
-Namespaces are implemented using _dictionaries_.  
-
 To access the _local namespace_, one can use the _locals()_ function:
 
 ```python
@@ -205,6 +213,8 @@ The _builtin namespace_ can be accessed as follows:
 ```python
 >>> print(dir(__builtins__))
 ```
+
+The _local namespace_ and the _global namespace_ are implemented as _dictionaries_. The _builtin namespace_ is a _module_.
 
 Variable scoping refers to the _visibility rules_ of a variable.  
 
@@ -308,19 +318,75 @@ UnboundLocalError: local variable 'i' referenced before assignment
 Here, inside the _increment()_ function, the variable i is assigned and the _global_ statement is not used. This makes it a local variable.  
 But the statement i += 1 tries to read the value of i which was not yet assigned, hence the error.  
 
-### 4.5 Documentation strings (docstrings)
-It is very common for a function to begin with a documentation string describing its usage.  
-It is not mandatory to always have a docstring, but it is considered good practice to have one for functions with an immediate obvious purpose.  
-For example:  
+### 4.5 About default values again
+We have seen in section 4.1 that a function can have parameters with default values.  
+It is allowed that the default values to be both mutable and immutable objects. 
+But, as a best-practice advice, you _should really prefer immutable objects_.  
+Here is an example to see why:
+
+``python
+>>> def add_one(list=[]):
+...     print('Before add: ', list)
+...     list.append(1)
+...     print('After add: ', list)
+...
+>>> add_one()
+Before add:  []
+After add:  [1]
+>>>
+>>> add_one()
+Before add:  [1]
+After add:  [1, 1]
+>>>
+```
+
+Here, we define a function named _add_one_, which appends the value 1 to a list sent as parameter. 
+The list argument has a _default value equal to an empty list_. 
+This means that we can call the function _without passing any parameter_, and, in this case, _an empty list is used_.
+In the function, we print the conten of the list parameter before and after we append the value to it. 
+After we call the function first time, we can see that the list parameter was empty before appending to it. 
+After the append, we can see that the list contains en element equal to 1, as expected.  
+So far, nothing out of the ordinary. But let us call the function again. 
+This time, we see that the list parameter already contains one element (equal to 1), before appending to it !  
+So, the function has a _side effect_ that might surprise many programmers unfamiliarized with this behavior.  
+What is happening ? The problem is that the parameter having a default value is _evaluated only once_. 
+If you modify it (assuming it is mutable, like in our example), you will see the modification across function calls.  
+How can we prevent this ? The _pythonic_ solution is as follows:
 
 ```python
->>> def max(a, b):
-...     """Return the maximum of two numbers"""
-...     if a >= b:
-...         return a
-...     return b
-... 
+>>> def add_one(list=None):
+...     if list is None:
+...         list = []
+...     print('Before add: ', list)
+...     list.append(1)
+...     print('After add: ', list)
+...
+>>> add_one()
+Before add:  []
+After add:  [1]
+>>>
+>>> add_one()
+Before add:  []
+After add:  [1]
+>>>
+>>> my_list = []
+>>>
+>>> add_one(my_list)
+Before add:  []
+After add:  [1]
+>>> my_list
+[1]
+>>>
+>>> add_one(my_list)
+Before add:  [1]
+After add:  [1, 1]
+>>> my_list
+[1, 1]
+>>>
 ```
+
+Here, we can see that the problem described before is solved and that also our function works as espected when we pass a given list as parameter.  
+So, don't pass mutable objects as default parameter values (such as lists, dictionaries, bytearrays, etc). Use _None_ as the default value, in that cases.
 
 ### 4.6 Functions are objects
 Let us remember that everything in Python is an object. That means that _functions are objects too_.  
@@ -329,9 +395,45 @@ While Python is not technically a functional programming language, it has some f
 Because functions are objects, we can, for example, assign a function to a variable:
 
 ```python
+>>> def max(a, b):
+...    if a > b:
+...        return a
+...    return b
+...
+>>> max(2, 3)
+3
 >>> max_func = max
 >>> max_func(9, 3)
 9
+```
+
+Here, *max_func* is a variable which refers an object which happens to be a function. We can call the function also via *max_func*.  
+
+In fact, functions are _callable_ objects. See the below example:
+
+```python
+>>> var = 5
+>>> callable(var)
+False
+>>> callable(max)
+True
+>>> callable(max_func)
+True
+>>>
+```
+
+### 4.7 Documentation strings (docstrings)
+It is very common for a function to begin with a documentation string describing its usage.  
+It is not mandatory to always have a docstring, but it is considered good practice to have one for functions with an immediate obvious purpose.  
+For example, let us rewrite the _max_ function, but this time using a _docstring_.
+
+```python
+>>> def max(a, b):
+...     """Return the maximum of two numbers"""
+...     if a > b:
+...         return a
+...     return b
+... 
 ```
 
 Functions being objects, we can access some of their attributes.  
@@ -344,7 +446,7 @@ For example, we can programatically access the function name and docstring attri
 'Return the maximum of two numbers'
 ```
 
-### 4.7 Rules for functions design, in the real world
+### 4.8 Rules for functions design, in the real world
 - Functions should be short. Long functions increase the code complexity and become harder to follow.
 - Functions should do one thing and do it well. If you have multiple tasks to do, you should create more functions.
 - Try to minimize the usage of global variables as much as possible. Prefer using function parameters instead.
