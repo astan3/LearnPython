@@ -2,14 +2,14 @@
 ### 3.1 Conditional execution
 The general form of a conditional expression is:  
 ```python
-if expression:
-    statements
-elif expression:
-    statements
-elif expression:
-    statements
+if expression1:
+    statements1
+elif expression2:
+    statements2
+elif expression3:
+    statements3
 else:
-    statements
+    statements4
 ```
 
 The _elif_ and _else_ clauses are _optional_.  
@@ -49,6 +49,7 @@ _Example_: the guessing game.
 The program selects a random number between 1 and 100. The player task is to guess that number.  
 The player has only 7 attempts to guess the number.  
 At each unsuccessful attempt, the player receives an indication whether the guessed number is either smaller or bigger than the correct number.  
+Open a file in your favorite text editor, add the code below and save it as guess.py
 
 ```python
 import random
@@ -76,6 +77,14 @@ if number_guessed:
 else:
     print("You failed to guess the number", number) 
 ```
+
+From the terminal (or _Command Prompt_ on _Windows_), execute:
+
+```python
+python guess.py
+```
+
+Observe what is happening.  
 
 #### 3.2.2 The _for_ statement
 The _for_ statement is used to _iterate_ over a _sequence_ or an _iterable_ object.  
