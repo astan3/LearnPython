@@ -6,13 +6,13 @@ An introduction to Python for beginners.
 [Control flow](Control_flow/Control_Flow.md)  
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 [Functions, closures and lambdas](Functions/Functions.md)   
+Basic file I/O. Filesystem access   
 Basic CS data structures 1: arrays, linked lists, stacks, queues  
 Basic CS data structures 2: trees and graphs  
 Basic CS data structures 3: hash tables  
 Recursivity and backtracking  
 Dynamic programming  
 Sorting and searching algorithms  
-Basic file I/O  
 Creating your own classes  
 Exceptions  
 Iterators and generators. Context managers    
