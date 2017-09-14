@@ -1,9 +1,8 @@
 ## 4. Functions, closures and lambdas  
 ### 4.1 Introduction
 Until now we only _used_ existing functions (either built-in functions or functions from the standard library).  
-In this chapter we will learn how we can create our own functions.  
+In this chapter we will learn how we can _create_ our own functions.  
 Non-trivial programs can use functions for reasons such as modularity, code reuse and maintainability.  
-These desiderates are extremely important in software development.  
 In python, functions are defined using the _def_ keyword.  
 Functions have a _name_ and a _body_. They can have _parameters_ (also called _arguments_) and can _return_ values.    
 As a first example, this is a simple function which adds two numbers and return their sum.  
@@ -118,6 +117,7 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<stdin>", line 4, in sum
 TypeError: unsupported operand type(s) for +=: 'int' and 'list'
+```
 
 If we want to achieve this, we need to _unpack_ the list:
 
@@ -126,7 +126,7 @@ If we want to achieve this, we need to _unpack_ the list:
 6
 ```
 
-If the last argument of a function begins with **, all the additional keyword arguments are placed in a dictionary:  
+If the last argument of a function begins with **, all the additional keyword arguments are placed in a _dictionary_:  
 
 ```python
 >>> def generic_function(*args, **kwargs):
@@ -165,7 +165,7 @@ Here is an example:
 
 This is happening because there are two variables that points to the same list objects: _items_ and _sequence_.  
 We than modified the referred object inside the *sequence_append()* function via the _sequence_ parameter.
-If a input object is immutable, it cannot be modified inside a function (or at all).  
+If a input object is _immutable_, it cannot be modified inside a function (or at all).  
 
 ```python
 >>> def increment_number(num):
@@ -319,7 +319,7 @@ Here, inside the _increment()_ function, the variable i is assigned and the _glo
 But the statement i += 1 tries to read the value of i which was not yet assigned, hence the error.  
 
 ### 4.5 About default values again
-We have seen in section 4.1 that a function can have parameters with default values.  
+We have seen in section _4.1_ that a function can have parameters with _default_ values.  
 It is allowed that the default values to be both mutable and immutable objects. 
 But, as a best-practice advice, you _should really prefer immutable objects_.  
 Here is an example to see why:
@@ -341,12 +341,12 @@ After add:  [1, 1]
 ```
 
 Here, we define a function named _add_one_, which appends the value 1 to a list sent as parameter. 
-The list argument has a _default value equal to an empty list_. 
+The list argument has a _default value equal to an empty list_.   
 This means that we can call the function _without passing any parameter_, and, in this case, _an empty list is used_.
-In the function, we print the conten of the list parameter before and after we append the value to it. 
+In the function, we print the content of the list parameter before and after we append the value to it. 
 After we call the function first time, we can see that the list parameter was empty before appending to it. 
-After the append, we can see that the list contains en element equal to 1, as expected.  
-So far, nothing out of the ordinary. But let us call the function again. 
+After the append, we can see that the list contains en element equal to 1, as expected.   
+So far, nothing out of the ordinary. But let us call the function again.   
 This time, we see that the list parameter already contains one element (equal to 1), before appending to it !  
 So, the function has a _side effect_ that might surprise many programmers unfamiliarized with this behavior.  
 What is happening ? The problem is that the parameter having a default value is _evaluated only once_. 
@@ -465,8 +465,7 @@ Hello John
 Hello Mike
 ```
 
-In section 4.6 we have seen that functions are objects.  
-So, if functions are objects, it means that a function can receive as parameter another function or it can return a function.  
+If functions are objects, it means that a function can receive as parameter another function or it can return a function.  
 Returning to our example, we notice that the *make_greeter()* function _returns another function_ (the _greeter()_ function).  
 The _greeter()_ function is a _nested function_, because it is defined inside the *make_greeter()* function.   
 The *make_greeter()* function is the _enclosing function_ of the _greeter()_ function.  
@@ -496,29 +495,8 @@ In outer function again, msg is Outer
 Here, we have a function, called *outer_function*, which has a local variable called _msg_.  
 In this function we have a nested function, which also have a local variable called _msg_.  
 So, we have two **different** variables with the same name (_msg_), in two scopes: an outer scope (bound to the *outer_function*) and an inner scope (bound to the *inner_function*).  
-But what if we want to change the value of the msg variable bound to the outer scope, from the _inner_function_ ? Can we use the _global_ keyword ?  
-Let's try:
-
-```python
->>> def outer_function():
-...     msg = 'Outer'
-...     def inner_function():
-...         global msg
-...         msg = 'Inner'
-...         print('In inner function, msg is', msg)
-...     print('In outer function, msg is', msg)
-...     inner_function()
-...     print('In outer function again, msg is', msg)
-...
->>> outer_function()
-In outer function, msg is Outer
-In inner function, msg is Inner
-In outer function again, msg is Outer
-```
-
-So, it didn't worked. We failed to modify the value of the _msg_ variable bound to the outer scope.  
-
-What is the solution ? Python 3 introduced the _nonlocal_ keyword that allows to assign a variable in an outer, but non-global, scope.  
+But what if we want to change the value of the msg variable bound to the outer scope, from the _inner_function_ ?  
+Python 3 introduced the _nonlocal_ keyword that allows to assign a variable in an outer, but non-global, scope.  
 
 ```python
 >>> def outer_function():
@@ -538,7 +516,7 @@ In outer function again, msg is Inner
 ```
 
 ### 4.9 Lambdas. The map, filter and reduce functions.
-Lamdas are small, anonymous functions, which are not bound to a name. They are _throw-away_ functions, needed only were have been created.  
+_Lamdas are small, anonymous functions_, which are not bound to a name. They are _throw-away_ functions, needed only were have been created.  
 For example, here is a function which receives two arguments and returns their sum.
 
 ```python
