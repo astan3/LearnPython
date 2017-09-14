@@ -6,6 +6,8 @@ An introduction to Python for beginners.
 [Control flow](Control_flow/Control_Flow.md)  
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 [Functions, closures and lambdas](Functions/Functions.md)   
+Recursivity  
+Sorting algorithms  
 Basic file I/O  
 Creating your own classes  
 Exceptions  
