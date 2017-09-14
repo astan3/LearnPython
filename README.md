@@ -12,10 +12,11 @@ Basic file I/O
 Creating your own classes  
 Exceptions  
 Iterators and generators. Context managers    
-Unit-testing and debugging  
+Unit-testing and Test Driven Development    
+Debugging  
 More on files and directories handling  
 Modules and packages  
-Coding style. PEP8    
+Coding style. PEP8  
 Regular expressions  
 Decorators  
 More about classes. Magic methods  
