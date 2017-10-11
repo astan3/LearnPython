@@ -6,7 +6,7 @@ An introduction to Python for beginners.
 [Control flow](Control_flow/Control_Flow.md)  
 [Lists, tuples, sets and dictionaries](Lists_Tuples_Sets_Dictionaries/Lists_Tuples_Sets_Dictionaries.md)  
 [Functions, closures and lambdas](Functions/Functions.md)  
-[Basics of handling exceptions] (Handling_Exceptions/Handling_Exceptions.md)  
+[Basics of handling exceptions](Handling_Exceptions/Handling_Exceptions.md)  
 Basic file I/O. Filesystem access. 
 Creating your own classes  
 Creating your own exceptions     
